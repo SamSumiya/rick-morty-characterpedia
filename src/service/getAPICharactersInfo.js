@@ -13,8 +13,9 @@ export const fetchAPICharactersInfo = async (
     );
     const responseData = await response.json();
     const totalPages = responseData.info.pages;
+    const count = responseData.info.count;
     const fetchCharacters = responseData.results;
-    return { totalPages, fetchCharacters };
+    return { totalPages, fetchCharacters, count };
   } catch (error) {}
 };
 
