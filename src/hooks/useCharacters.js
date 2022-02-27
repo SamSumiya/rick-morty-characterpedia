@@ -10,19 +10,25 @@ export const useCharacters = (
 ) => {
   const [fetchedAllCharacters, setFetchedAllCharacters] = useState([]);
   const [totalPageNumbers, setTotalPageNumbers] = useState(0);
+  const [count, setCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     fetchAPICharactersInfo(
       pageNumber,
       characterName,
       characterStatus,
       characterGender,
       characterSpecies
-    ).then(({ totalPages, fetchCharacters }) => {
-      setTotalPageNumbers(totalPages);
-      setFetchedAllCharacters(fetchCharacters);
-    });
+    )
+      .then(({ totalPages, fetchCharacters, count }) => {
+        setTotalPageNumbers(totalPages);
+        setFetchedAllCharacters(fetchCharacters);
+        setCount(count);
+      })
+      .catch((error) => console.error(error))
+      .finally(setIsLoading(false));
   }, [
     pageNumber,
     characterName,
@@ -34,6 +40,7 @@ export const useCharacters = (
   return {
     fetchedAllCharacters,
     totalPageNumbers,
+    count,
     setIsLoading,
   };
 };
