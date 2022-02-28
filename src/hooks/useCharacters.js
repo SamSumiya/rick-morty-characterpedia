@@ -13,6 +13,7 @@ export const useCharacters = (
   const [count, setCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
+
   useEffect(() => {
     setIsLoading(true);
     fetchAPICharactersInfo(
@@ -37,10 +38,12 @@ export const useCharacters = (
     characterSpecies,
   ]);
 
+
   return {
     fetchedAllCharacters,
     totalPageNumbers,
     count,
+    isLoading,
     setIsLoading,
   };
 };
