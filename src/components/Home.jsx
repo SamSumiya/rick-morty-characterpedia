@@ -17,6 +17,7 @@ export const Home = () => {
   const [userGenderInput, setUserGenderInput] = useState('');
   const [filterCharacters, setFilterCharacters] = useState([]);
 
+  console.log(filterCharacters, 'filterCharacters');
 
   const {
     fetchedAllCharacters,
@@ -42,15 +43,13 @@ export const Home = () => {
     );
   }
 
-  console.log(filterCharacters) 
-
   return (
     <>
       <FilterCharacters
         setUsernameInput={setUsernameInput}
-        setCurrentPageNumber={setCurrentPageNumber}
-        currentPageNumber={currentPageNumber}
-        totalPageNumbers={totalPageNumbers}
+        // setCurrentPageNumber={setCurrentPageNumber}
+        // currentPageNumber={currentPageNumber}
+        // totalPageNumbers={totalPageNumbers}
         fetchedAllCharacters={fetchedAllCharacters}
         setFilterCharacters={setFilterCharacters}
       />
