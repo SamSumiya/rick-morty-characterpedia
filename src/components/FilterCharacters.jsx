@@ -8,6 +8,7 @@ export const FilterCharacters = ({
 }) => {
   const [search, setSearch] = useState('');
   const [filteredCharacters, setFilteredCharacters] = useState([]);
+  //  const [filterCharacters, setFilterCharacters] = useState([]);
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -17,20 +18,19 @@ export const FilterCharacters = ({
     setSearch(value);
   };
 
-
   console.log(search);
-  setUsernameInput(search);
-  
+
+  useEffect(() => {
+    setUsernameInput(search);
+  }, [search, setUsernameInput]);
+
+  // setUsernameInput(search);
+
   const handleFilter = (event) => {
     event.preventDefault();
 
     const searchTerm = event.target.value;
-    console.log(searchTerm, 'searchTerm');
-
-
     setSearch(searchTerm);
-    console.log(search)
-    // setUsernameInput(search);
 
     if (
       searchTerm === '' ||
@@ -40,26 +40,28 @@ export const FilterCharacters = ({
     ) {
       setFilteredCharacters([]);
     } else {
-      const filteredCharacters = fetchedAllCharacters.filter((character) => {
+      const characters = fetchedAllCharacters.filter((character) => {
         return character.name.toLowerCase().includes(search.toLowerCase());
       });
-      setFilteredCharacters(filteredCharacters);
+      setFilteredCharacters(characters);
     }
   };
+
+  console.log(filteredCharacters, 'filteredCharacters');
 
   useEffect(() => {
     setFilterCharacters(filteredCharacters);
   }, [filteredCharacters, setFilterCharacters]);
 
   // const newCharacters = [...fetchedAllCharacters]
-  // const justNames = [] 
+  // const justNames = []
   // filteredCharacters.map((character) => {
   //   return justNames.push(character.name);
-  // }); 
+  // });
 
   // console.log(justNames, 'justName');
-  // const currentIndex = justNames.indexOf(search); 
-  // console.log(currentIndex, 'currentIndex'); 
+  // const currentIndex = justNames.indexOf(search);
+  // console.log(currentIndex, 'currentIndex');
 
   return (
     <form className="input-wrapper" onSubmit={handleFormSubmit}>
@@ -71,20 +73,18 @@ export const FilterCharacters = ({
       />
       {filteredCharacters.length !== 0 && (
         <div className="search-characterNames">
-          {filteredCharacters
-            // .slice(0, currentIndex+2)
-            .map((character) => {
-              return (
-                <div key={character.id}>
-                  <p
-                    className="dropdown-name"
-                    onClick={(value) => handleChange(value.target.innerText)}
-                  >
-                    {character.name}
-                  </p>
-                </div>
-              );
-            })}
+          {filteredCharacters.map((character) => {
+            return (
+              <div key={character.id}>
+                <p
+                  className="dropdown-name"
+                  onClick={(value) => handleChange(value.target.innerText)}
+                >
+                  {character.name}
+                </p>
+              </div>
+            );
+          })}
         </div>
       )}
       <button onClick={handleFormSubmit}>Search</button>
