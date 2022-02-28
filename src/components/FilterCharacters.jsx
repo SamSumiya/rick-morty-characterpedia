@@ -11,9 +11,9 @@ export const FilterCharacters = ({ setUsernameInput }) => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
   };
-  
+
   useEffect(() => {
-    setUsernameInput(search);
+    setUsernameInput(search)
   }, [search, setUsernameInput]);
 
   const handleChange = (event) => {
@@ -27,7 +27,6 @@ export const FilterCharacters = ({ setUsernameInput }) => {
         placeholder="Search for a character"
         onChange={handleChange}
       />
-      <dropdown></dropdown>
     </form>
   );
 };

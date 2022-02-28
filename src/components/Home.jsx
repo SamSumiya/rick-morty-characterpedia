@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useCharacters } from '../hooks/useCharacters';
+import { FilterCharacters } from './FilterCharacters';
 
 import '../styles/Home.css';
 
@@ -37,6 +38,7 @@ export const Home = () => {
 
   return (
     <>
+      <FilterCharacters setUsernameInput={setUsernameInput}/>
       <div className="displayingCharacters-numbers-wrapper">
         <div className="displayingCharacters-found-numbers">
           {'·'} {count} {'characters found'} {'·'}
