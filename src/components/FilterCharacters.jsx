@@ -8,6 +8,7 @@ export const FilterCharacters = ({
 }) => {
   const [search, setSearch] = useState('');
   const [filteredCharacters, setFilteredCharacters] = useState([]);
+  const [nonDupChacters, setNonDupCharacters] = useState([]);
   //  const [filterCharacters, setFilterCharacters] = useState([]);
 
   const handleFormSubmit = (event) => {
@@ -26,11 +27,17 @@ export const FilterCharacters = ({
 
   // setUsernameInput(search);
 
+  useEffect(() => {
+    setFilterCharacters(filteredCharacters);
+  }, [filteredCharacters, search, setFilterCharacters, setFilteredCharacters]);
+
   const handleFilter = (event) => {
     event.preventDefault();
 
     const searchTerm = event.target.value;
     setSearch(searchTerm);
+    
+    // const nonDupCharacters = {} 
 
     if (
       searchTerm === '' ||
@@ -47,11 +54,25 @@ export const FilterCharacters = ({
     }
   };
 
-  console.log(filteredCharacters, 'filteredCharacters');
 
-  useEffect(() => {
-    setFilterCharacters(filteredCharacters);
-  }, [filteredCharacters, setFilterCharacters]);
+  useEffect(() => { 
+    const results = {}
+      fetchedAllCharacters.filter((character) => { 
+        if (!results[character.name]) { 
+          results[character.name] = character; 
+          return character; 
+        } 
+      setNonDupCharacters(results)
+    });
+  }
+  , [fetchedAllCharacters])
+  
+  
+  console.log(nonDupChacters, 'nonDupChacters');
+
+  // useEffect(() => {
+  //   setFilterCharacters(filteredCharacters);
+  // }, [filteredCharacters, setFilterCharacters, search]);
 
   // const newCharacters = [...fetchedAllCharacters]
   // const justNames = []
@@ -62,6 +83,7 @@ export const FilterCharacters = ({
   // console.log(justNames, 'justName');
   // const currentIndex = justNames.indexOf(search);
   // console.log(currentIndex, 'currentIndex');
+  // const totalKeys = Object.keys(nonDupChacters) ; 
 
   return (
     <form className="input-wrapper" onSubmit={handleFormSubmit}>
@@ -73,7 +95,7 @@ export const FilterCharacters = ({
       />
       {filteredCharacters.length !== 0 && (
         <div className="search-characterNames">
-          {filteredCharacters.map((character) => {
+          {/* {filteredCharacters.map((character) => {
             return (
               <div key={character.id}>
                 <p
@@ -81,6 +103,19 @@ export const FilterCharacters = ({
                   onClick={(value) => handleChange(value.target.innerText)}
                 >
                   {character.name}
+                </p>
+              </div>
+            );
+          })} */}
+          {Object.keys(nonDupChacters).map((character) => {
+            console.log(character, 'character');
+            return (
+              <div key={character.id}>
+                <p
+                  className="dropdown-name"
+                  onClick={(value) => handleChange(value.target.innerText)}
+                >
+                  {character}
                 </p>
               </div>
             );
