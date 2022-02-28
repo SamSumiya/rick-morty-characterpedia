@@ -13,6 +13,8 @@ export const Home = () => {
   const [userTypeInput, setUsetTypeInput] = useState('');
   const [userGenderInput, setUserGenderInput] = useState('');
 
+  console.log(currentPageNumber);
+
   const {
     fetchedAllCharacters,
     totalPageNumbers,
@@ -42,6 +44,8 @@ export const Home = () => {
       <FilterCharacters
         setUsernameInput={setUsernameInput}
         setCurrentPageNumber={setCurrentPageNumber}
+        currentPageNumber={currentPageNumber}
+        totalPageNumbers={totalPageNumbers}
       />
       <div className="displayingCharacters-numbers-wrapper">
         <div className="displayingCharacters-found-numbers">

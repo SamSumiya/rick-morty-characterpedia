@@ -1,0 +1,11 @@
+.pagination-wrapper {
+ display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  color: 'white'
+}
+
+.pagination-wrapper span {
+  display: flex;
+  flex-direction: row;
+}
