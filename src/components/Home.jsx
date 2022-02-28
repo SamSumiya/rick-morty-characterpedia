@@ -18,7 +18,7 @@ export const Home = () => {
   const [filterCharacters, setFilterCharacters] = useState([]);
 
   console.log(filterCharacters, 'filterCharacters');
-
+  console.log(usernameInput, 'usernameInput');
   const {
     fetchedAllCharacters,
     totalPageNumbers,
