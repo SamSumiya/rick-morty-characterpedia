@@ -15,6 +15,7 @@ export const Home = () => {
   const [userSpeciesInput, setUserSpeciesInput] = useState('');
   const [userTypeInput, setUsetTypeInput] = useState('');
   const [userGenderInput, setUserGenderInput] = useState('');
+  const [filterCharacters, setFilterCharacters] = useState([]);
 
 
   const {
@@ -41,6 +42,8 @@ export const Home = () => {
     );
   }
 
+  console.log(filterCharacters) 
+
   return (
     <>
       <FilterCharacters
@@ -49,6 +52,7 @@ export const Home = () => {
         currentPageNumber={currentPageNumber}
         totalPageNumbers={totalPageNumbers}
         fetchedAllCharacters={fetchedAllCharacters}
+        setFilterCharacters={setFilterCharacters}
       />
       <div className="displayingCharacters-numbers-wrapper">
         <div className="displayingCharacters-found-numbers">
