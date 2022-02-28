@@ -1,16 +1,13 @@
-
 .displayingCharacters-numbers-wrapper {
   font-weight: bold;
   color: #97a8cb;
-  font-size: .7rem;
+  font-size: 0.7rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: .8rem 1.2rem;
+  margin: 0.8rem 1.2rem;
 }
-
-
 
 .displayingCharacters-wrapper {
   display: grid;
@@ -44,6 +41,5 @@
 
 .displayCharacters-character button {
   background-color: #81e6d9;
-  border: none; 
+  border: none;
 }
-

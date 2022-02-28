@@ -9,7 +9,6 @@ export const useCharacters = (
   userTypeInput,
   userGenderInput
 ) => {
-  // console.log(characterName, 'characterName');
   const [fetchedAllCharacters, setFetchedAllCharacters] = useState([]);
   const [totalPageNumbers, setTotalPageNumbers] = useState(0);
   const [count, setCount] = useState(0);

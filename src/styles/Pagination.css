@@ -1,8 +1,8 @@
 .pagination-wrapper {
- display: flex;
+  display: flex;
   flex-direction: column;
-  justify-content: center; 
-  color: 'white'
+  justify-content: center;
+  color: 'white';
 }
 
 .pagination-wrapper span {

@@ -16,7 +16,6 @@ export const Home = () => {
   const [userTypeInput, setUsetTypeInput] = useState('');
   const [userGenderInput, setUserGenderInput] = useState('');
 
-  console.log(currentPageNumber);
 
   const {
     fetchedAllCharacters,
@@ -49,6 +48,7 @@ export const Home = () => {
         setCurrentPageNumber={setCurrentPageNumber}
         currentPageNumber={currentPageNumber}
         totalPageNumbers={totalPageNumbers}
+        fetchedAllCharacters={fetchedAllCharacters}
       />
       <div className="displayingCharacters-numbers-wrapper">
         <div className="displayingCharacters-found-numbers">
@@ -58,13 +58,17 @@ export const Home = () => {
           {`Showing ${fetchedAllCharacters.length}`}
         </div>
       </div>
-      <div></div>
+      <Pagination
+        totalPageNumbers={totalPageNumbers}
+        currentPageNumber={currentPageNumber}
+        setCurrentPageNumber={setCurrentPageNumber}
+      />
 
       <motion.div
         layout
         transition={{
           delay: 0.3,
-          default: { duration: 0.3 }, 
+          default: { duration: 0.3 },
         }}
         animate={{ opacity: 1 }}
         className="displayingCharacters-wrapper"
@@ -72,21 +76,21 @@ export const Home = () => {
         {fetchedAllCharacters.map((character) => (
           <AnimatePresence key={character.id}>
             {/* <ul key={character.id} className="displayCharacters-character"> */}
-              <CharacterList
-                image={character.image}
-                name={character.name} 
-                status={character.status}
-                species={character.species}
-                type={character.type}
-              />
+            <CharacterList
+              image={character.image}
+              name={character.name}
+              status={character.status}
+              species={character.species}
+              type={character.type}
+            />
           </AnimatePresence>
         ))}
-        <Pagination
-          totalPageNumbers={totalPageNumbers}
-          currentPageNumber={currentPageNumber}
-          setCurrentPageNumber={setCurrentPageNumber}
-        />
       </motion.div>
+      <Pagination
+        totalPageNumbers={totalPageNumbers}
+        currentPageNumber={currentPageNumber}
+        setCurrentPageNumber={setCurrentPageNumber}
+      />
     </>
   );
 };
