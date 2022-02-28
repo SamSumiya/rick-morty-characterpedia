@@ -1,7 +1,7 @@
 import '../styles/FilterCharacters.css';
 import { useState, useEffect } from 'react';
 
-export const FilterCharacters = ({ setUsernameInput }) => {
+export const FilterCharacters = ({ setUsernameInput, fetchedAllCharacters }) => {
   const [search, setSearch] = useState('');
 
   const handleFormSubmit = (event) => {
@@ -16,7 +16,6 @@ export const FilterCharacters = ({ setUsernameInput }) => {
     setSearch(event.target.value);
   };
 
-  
   return (
     <form className="input-wrapper" onSubmit={handleFormSubmit}>
       <input
@@ -24,6 +23,13 @@ export const FilterCharacters = ({ setUsernameInput }) => {
         placeholder="Search for a character"
         onChange={handleChange}
       />
+      {fetchedAllCharacters.map(character => {
+        return (
+          <div key={character.id}>
+            <p>{character.name}</p>
+          </div>
+        )
+      })}
       <button onClick={handleFormSubmit}>Search</button>
     </form>
   );
