@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { useCharacters } from '../hooks/useCharacters';
 import { FilterCharacters } from './FilterCharacters';
-import { Pagination } from './Pagination'; 
-
+import { Pagination } from './Pagination';
 import '../styles/Home.css';
+
+import { CharacterList } from '../view/CharacterList';
+
+import { motion, AnimatePresence } from 'framer-motion';
 
 export const Home = () => {
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
@@ -57,22 +60,33 @@ export const Home = () => {
       </div>
       <div></div>
 
-      <div className="displayingCharacters-wrapper">
+      <motion.div
+        layout
+        transition={{
+          delay: 0.3,
+          default: { duration: 0.3 }, 
+        }}
+        animate={{ opacity: 1 }}
+        className="displayingCharacters-wrapper"
+      >
         {fetchedAllCharacters.map((character) => (
-          <ul key={character.id} className="displayCharacters-character">
-            <img src={character.image} alt={character.image} />
-            <li className="displayCharacters-name">{character.name}</li>
-            <li>{character.status}</li>
-            <li>{character.species}</li>
-            <button> Details </button>
-          </ul>
+          <AnimatePresence key={character.id}>
+            {/* <ul key={character.id} className="displayCharacters-character"> */}
+              <CharacterList
+                image={character.image}
+                name={character.name} 
+                status={character.status}
+                species={character.species}
+                type={character.type}
+              />
+          </AnimatePresence>
         ))}
         <Pagination
           totalPageNumbers={totalPageNumbers}
           currentPageNumber={currentPageNumber}
           setCurrentPageNumber={setCurrentPageNumber}
         />
-      </div>
+      </motion.div>
     </>
   );
 };

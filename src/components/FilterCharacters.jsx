@@ -1,7 +1,7 @@
 import '../styles/FilterCharacters.css';
 import { useState, useEffect } from 'react';
 
-export const FilterCharacters = ({ setUsernameInput, setPageNumber }) => {
+export const FilterCharacters = ({ setUsernameInput }) => {
   const [search, setSearch] = useState('');
 
   const handleFormSubmit = (event) => {
@@ -14,10 +14,9 @@ export const FilterCharacters = ({ setUsernameInput, setPageNumber }) => {
 
   const handleChange = (event) => {
     setSearch(event.target.value);
-    setPageNumber(1);
   };
 
-
+  
   return (
     <form className="input-wrapper" onSubmit={handleFormSubmit}>
       <input
