@@ -6,7 +6,7 @@ import { Pagination } from './Pagination';
 import '../styles/Home.css';
 
 export const Home = () => {
-  const [pageNumber, setPageNumber] = useState(1);
+  const [currentPageNumber, setCurrentPageNumber] = useState(1);
   const [usernameInput, setUsernameInput] = useState('');
   const [userStatusInput, setUserStatusInput] = useState('');
   const [userSpeciesInput, setUserSpeciesInput] = useState('');
@@ -20,7 +20,7 @@ export const Home = () => {
     isLoading,
     noDataFound,
   } = useCharacters(
-    pageNumber,
+    currentPageNumber,
     usernameInput,
     userStatusInput,
     userSpeciesInput,
@@ -41,7 +41,7 @@ export const Home = () => {
     <>
       <FilterCharacters
         setUsernameInput={setUsernameInput}
-        setPageNumber={setPageNumber}
+        setCurrentPageNumber={setCurrentPageNumber}
       />
       <div className="displayingCharacters-numbers-wrapper">
         <div className="displayingCharacters-found-numbers">
@@ -63,7 +63,11 @@ export const Home = () => {
             <button> Details </button>
           </ul>
         ))}
-        <Pagination />
+        <Pagination
+          totalPageNumbers={totalPageNumbers}
+          currentPageNumber={currentPageNumber}
+          setCurrentPageNumber={setCurrentPageNumber}
+        />
       </div>
     </>
   );
