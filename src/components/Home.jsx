@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useCharacters } from '../hooks/useCharacters';
 import { FilterCharacters } from './FilterCharacters';
+import { Pagination } from './Pagination'; 
 
 import '../styles/Home.css';
 
@@ -38,7 +39,10 @@ export const Home = () => {
 
   return (
     <>
-      <FilterCharacters setUsernameInput={setUsernameInput}/>
+      <FilterCharacters
+        setUsernameInput={setUsernameInput}
+        setPageNumber={setPageNumber}
+      />
       <div className="displayingCharacters-numbers-wrapper">
         <div className="displayingCharacters-found-numbers">
           {'·'} {count} {'characters found'} {'·'}
@@ -47,6 +51,7 @@ export const Home = () => {
           {`Showing ${fetchedAllCharacters.length}`}
         </div>
       </div>
+      <div></div>
 
       <div className="displayingCharacters-wrapper">
         {fetchedAllCharacters.map((character) => (
@@ -58,6 +63,7 @@ export const Home = () => {
             <button> Details </button>
           </ul>
         ))}
+        <Pagination />
       </div>
     </>
   );
