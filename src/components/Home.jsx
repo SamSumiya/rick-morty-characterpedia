@@ -1,9 +1,10 @@
-import React from 'react'
+import { useState, useEffect } from 'react';
 
-import '../styles/Home.css'
+import '../styles/Home.css';
 
 export const Home = ({ fetchedAllCharacters, totalPageNumbers, count }) => {
 
+  
   return (
     <>
       <div className="displayingCharacters-numbers-wrapper">
@@ -28,4 +29,4 @@ export const Home = ({ fetchedAllCharacters, totalPageNumbers, count }) => {
       </div>
     </>
   );
-}
+};

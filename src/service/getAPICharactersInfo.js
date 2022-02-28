@@ -16,12 +16,7 @@ export const fetchAPICharactersInfo = async (
     const count = responseData.info.count;
     const fetchCharacters = responseData.results;
     return { totalPages, fetchCharacters, count };
-  } catch (error) {}
+  } catch (error) {
+    console.error(error);
+  }
 };
-
-//  fetch(
-//    `${URL}/?page=${pageNumber}&name=${characterName}&status=${characterStatus}&gender=${characterGender}&species=${characterSpecies}`
-//  )
-//    .then((response) => response.json())
-//    .then(console.log)
-//    .catch((error) => console.log(error));
