@@ -3,25 +3,26 @@ import { fetchAPICharactersInfo } from '../service/getAPICharactersInfo';
 
 export const useCharacters = (
   pageNumber,
-  characterName,
-  characterStatus,
-  characterGender,
-  characterSpecies
+  usernameInput,
+  userStatusInput,
+  userSpeciesInput,
+  userTypeInput,
+  userGenderInput
 ) => {
+  // console.log(characterName, 'characterName');
   const [fetchedAllCharacters, setFetchedAllCharacters] = useState([]);
   const [totalPageNumbers, setTotalPageNumbers] = useState(0);
   const [count, setCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-
-
   useEffect(() => {
     setIsLoading(true);
     fetchAPICharactersInfo(
       pageNumber,
-      characterName,
-      characterStatus,
-      characterGender,
-      characterSpecies
+      usernameInput,
+      userStatusInput,
+      userSpeciesInput,
+      userTypeInput,
+      userGenderInput
     )
       .then(({ totalPages, fetchCharacters, count }) => {
         setTotalPageNumbers(totalPages);
@@ -32,12 +33,12 @@ export const useCharacters = (
       .finally(setIsLoading(false));
   }, [
     pageNumber,
-    characterName,
-    characterStatus,
-    characterGender,
-    characterSpecies,
+    usernameInput,
+    userStatusInput,
+    userSpeciesInput,
+    userTypeInput,
+    userGenderInput,
   ]);
-
 
   return {
     fetchedAllCharacters,

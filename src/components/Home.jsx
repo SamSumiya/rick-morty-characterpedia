@@ -1,10 +1,40 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useCharacters } from '../hooks/useCharacters';
 
 import '../styles/Home.css';
 
-export const Home = ({ fetchedAllCharacters, totalPageNumbers, count }) => {
+export const Home = () => {
+  const [pageNumber, setPageNumber] = useState(1);
+  const [usernameInput, setUsernameInput] = useState('');
+  const [userStatusInput, setUserStatusInput] = useState('');
+  const [userSpeciesInput, setUserSpeciesInput] = useState('');
+  const [userTypeInput, setUsetTypeInput] = useState('');
+  const [userGenderInput, setUserGenderInput] = useState('');
 
-  
+  const {
+    fetchedAllCharacters,
+    totalPageNumbers,
+    count,
+    isLoading,
+    noDataFound,
+  } = useCharacters(
+    pageNumber,
+    usernameInput,
+    userStatusInput,
+    userSpeciesInput,
+    userTypeInput,
+    userGenderInput
+  );
+
+  if (isLoading) {
+    return (
+      <img
+        src="https://media2.giphy.com/media/9JwUhPDEGmhbWgCMEZ/source.gif"
+        alt="spinning Rick Head"
+      />
+    );
+  }
+
   return (
     <>
       <div className="displayingCharacters-numbers-wrapper">
