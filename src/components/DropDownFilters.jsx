@@ -1,8 +1,22 @@
 import { useState, useRef, useEffect } from 'react'
 
-export const DropDownFilters = () => {
+export const DropDownFilters = ({
+  setUserStatusInput,
+  setUserSpeciesInput,
+  setUserTypeInput,
+  setUserGenderInput,
+}) => {
+
+
+  const statusRef = useRef(null);
+  
+
   return (
-    <div>Filters</div>
-  )
-}
+    <>
+      <h1>Filters</h1> 
+          
+  
+    </>
+  );
+};
 

@@ -16,10 +16,17 @@ export const Pagination = ({
       setCurrentPageNumber(1);
     }
   } , [setCurrentPageNumber, usernameInput]); 
-  
+
+  console.log(currentPageNumber);
 
   const handleNextPage = () => {
-    setCurrentPageNumber((prevPage) => (prevPage += 1));
+    setCurrentPageNumber((prevPage) => {
+      if (prevPage < totalPageNumbers) { 
+        return prevPage + 1; 
+      } else { 
+        return 1; 
+      } 
+    });
   };
 
   const handlePrevioiusPage = () => {
