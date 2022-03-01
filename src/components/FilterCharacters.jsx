@@ -26,7 +26,6 @@ export const FilterCharacters = ({
     setUsernameInput(search);
   }, [search, setUsernameInput]);
 
-
   useEffect(() => {
     setFilterCharacters(filteredCharacters);
   }, [filteredCharacters, search, setFilterCharacters, setFilteredCharacters]);
@@ -54,18 +53,13 @@ export const FilterCharacters = ({
 
   useEffect(() => {
     const arrayOfNames = [];
-    console.log(fetchedAllCharacters, '11111111111');
-     fetchedAllCharacters.filter((character) => {
+    fetchedAllCharacters.filter((character) => {
       if (!arrayOfNames.includes(character.name)) {
         arrayOfNames.push(character.name);
       }
       setNonDupCharacters(arrayOfNames);
     });
-
   }, [search, fetchedAllCharacters]);
-  
-  console.log(nonDupChacters, 'nonDupChacters');
-
 
   return (
     <form className="input-wrapper" onSubmit={handleFormSubmit}>
@@ -91,7 +85,7 @@ export const FilterCharacters = ({
           })} */}
           {nonDupChacters.map((name, id) => {
             return (
-              <div key={name+id}>
+              <div key={name + id}>
                 <p
                   className="dropdown-name"
                   onClick={(value) => handleChange(value.target.innerText)}

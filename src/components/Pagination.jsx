@@ -9,30 +9,49 @@ export const Pagination = ({
 }) => {
   const [localPage, setLocalPage] = useState(currentPageNumber);
 
-  const handleNextPage = (localPage) => {
+  const handleNextPage = () => {
     setCurrentPageNumber((prevPage) => (prevPage += 1));
   };
 
-  const handlePrevioiusPage = (localPage) => {
+  const handlePrevioiusPage = () => {
     setCurrentPageNumber((prevPage) => (prevPage -= 1));
   };
+
+  const handleNegativeOutboundPage = () => {   
+    setCurrentPageNumber(totalPageNumbers);
+  }
+
+  const handlePositiveOutboundPage = () => { 
+    setCurrentPageNumber(1);
+  }
 
   useEffect(() => {
     if (localPage < totalPageNumbers) {
       setCurrentPageNumber(localPage);
     }
-  }, [localPage, setCurrentPageNumber]);
+  }, [localPage, setCurrentPageNumber, totalPageNumbers]);
 
   return (
     <div className="pagination-wrapper">
       <span>
-        <button onClick={handlePrevioiusPage}>Previos</button>
+        {/* {currentPageNumber >= 1 && (
+          <button onClick={handlePrevioiusPage}>Prev</button>
+        )} */}
+        {currentPageNumber > 1 ? (
+          <button onClick={handlePrevioiusPage}>Prev</button>
+        ) : (
+          <button onClick={handleNegativeOutboundPage}>Prev</button>
+        )}
       </span>
-      <span>
+      <span style={{color: 'white'}}>
         {currentPageNumber} / {totalPageNumbers}
       </span>
       <span>
-        <button onClick={handleNextPage}>Next</button>
+        {currentPageNumber < totalPageNumbers ? (
+          <button onClick={handleNextPage}>next</button>
+        ) : (
+          <button onClick={handlePositiveOutboundPage}>next</button>
+        )}
       </span>
     </div>
   );
