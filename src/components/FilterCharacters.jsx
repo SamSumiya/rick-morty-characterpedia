@@ -20,12 +20,12 @@ export const FilterCharacters = ({
   };
 
   console.log(search);
+  console.log(filteredCharacters);
 
   useEffect(() => {
     setUsernameInput(search);
   }, [search, setUsernameInput]);
 
-  // setUsernameInput(search);
 
   useEffect(() => {
     setFilterCharacters(filteredCharacters);
@@ -36,8 +36,6 @@ export const FilterCharacters = ({
 
     const searchTerm = event.target.value;
     setSearch(searchTerm);
-    
-    // const nonDupCharacters = {} 
 
     if (
       searchTerm === '' ||
@@ -54,36 +52,20 @@ export const FilterCharacters = ({
     }
   };
 
-
-  useEffect(() => { 
-    const results = {}
-      fetchedAllCharacters.filter((character) => { 
-        if (!results[character.name]) { 
-          results[character.name] = character; 
-          return character; 
-        } 
-      setNonDupCharacters(results)
+  useEffect(() => {
+    const arrayOfNames = [];
+    console.log(fetchedAllCharacters, '11111111111');
+     fetchedAllCharacters.filter((character) => {
+      if (!arrayOfNames.includes(character.name)) {
+        arrayOfNames.push(character.name);
+      }
+      setNonDupCharacters(arrayOfNames);
     });
-  }
-  , [fetchedAllCharacters])
-  
+
+  }, [search, fetchedAllCharacters]);
   
   console.log(nonDupChacters, 'nonDupChacters');
 
-  // useEffect(() => {
-  //   setFilterCharacters(filteredCharacters);
-  // }, [filteredCharacters, setFilterCharacters, search]);
-
-  // const newCharacters = [...fetchedAllCharacters]
-  // const justNames = []
-  // filteredCharacters.map((character) => {
-  //   return justNames.push(character.name);
-  // });
-
-  // console.log(justNames, 'justName');
-  // const currentIndex = justNames.indexOf(search);
-  // console.log(currentIndex, 'currentIndex');
-  // const totalKeys = Object.keys(nonDupChacters) ; 
 
   return (
     <form className="input-wrapper" onSubmit={handleFormSubmit}>
@@ -107,10 +89,22 @@ export const FilterCharacters = ({
               </div>
             );
           })} */}
-          {Object.keys(nonDupChacters).map((character) => {
+          {nonDupChacters.map((name, id) => {
+            return (
+              <div key={name+id}>
+                <p
+                  className="dropdown-name"
+                  onClick={(value) => handleChange(value.target.innerText)}
+                >
+                  {name}
+                </p>
+              </div>
+            );
+          })}
+          {/* {Object.keys(nonDupChacters).map((character) => {
             console.log(character, 'character');
             return (
-              <div key={character.id}>
+              <div key={character}>
                 <p
                   className="dropdown-name"
                   onClick={(value) => handleChange(value.target.innerText)}
@@ -119,7 +113,7 @@ export const FilterCharacters = ({
                 </p>
               </div>
             );
-          })}
+          })} */}
         </div>
       )}
       <button onClick={handleFormSubmit}>Search</button>
