@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { useCharacters } from '../hooks/useCharacters';
 import { FilterCharacters } from './FilterCharacters';
+import { DropDownFilters } from './DropDownFilters'; 
 import { Pagination } from './Pagination';
+
 import '../styles/Home.css';
 
 import { CharacterList } from '../view/CharacterList';
@@ -56,6 +58,7 @@ export const Home = () => {
         setFilterCharacters={setFilterCharacters}
         // setUpdatedCurrentPageNumber={setUpdatedCurrentPageNumber}
       />
+      <DropDownFilters /> 
 
       <div className="displayingCharacters-numbers-wrapper">
         <div className="displayingCharacters-found-numbers">
