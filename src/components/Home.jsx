@@ -10,6 +10,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export const Home = () => {
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
+  // const [updatedCurrentPageNumber, setUpdatedCurrentPageNumber] =
+  //   useState(null);
   const [usernameInput, setUsernameInput] = useState('');
   const [userStatusInput, setUserStatusInput] = useState('');
   const [userSpeciesInput, setUserSpeciesInput] = useState('');
@@ -17,6 +19,7 @@ export const Home = () => {
   const [userGenderInput, setUserGenderInput] = useState('');
   const [filterCharacters, setFilterCharacters] = useState([]);
 
+  console.log(currentPageNumber);
 
   const {
     fetchedAllCharacters,
@@ -31,9 +34,7 @@ export const Home = () => {
     userSpeciesInput,
     userTypeInput,
     userGenderInput
-    );
-  
- 
+  );
 
   if (isLoading) {
     return (
@@ -53,8 +54,9 @@ export const Home = () => {
         // totalPageNumbers={totalPageNumbers}
         fetchedAllCharacters={fetchedAllCharacters}
         setFilterCharacters={setFilterCharacters}
+        // setUpdatedCurrentPageNumber={setUpdatedCurrentPageNumber}
       />
-      
+
       <div className="displayingCharacters-numbers-wrapper">
         <div className="displayingCharacters-found-numbers">
           {'·'} {count} {'characters found'} {'·'}
@@ -63,7 +65,6 @@ export const Home = () => {
           {`Showing ${fetchedAllCharacters.length}`}
         </div>
       </div>
-
 
       <Pagination
         totalPageNumbers={totalPageNumbers}
@@ -97,6 +98,7 @@ export const Home = () => {
         totalPageNumbers={totalPageNumbers}
         currentPageNumber={currentPageNumber}
         setCurrentPageNumber={setCurrentPageNumber}
+        usernameInput={usernameInput}
       />
     </>
   );

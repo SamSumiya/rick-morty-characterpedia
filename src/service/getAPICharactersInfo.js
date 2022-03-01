@@ -1,13 +1,14 @@
 const URL = 'https://rickandmortyapi.com/api/character';
 
 export const fetchAPICharactersInfo = async (
-  pageNumber,
-  characterName,
-  characterStatus,
-  characterGender,
-  characterType,
-  characterSpecies
+  pageNumber = 1,
+  characterName = '',
+  characterStatus = '',
+  characterGender = '',
+  characterType = '',
+  characterSpecies = ''
 ) => {
+  console.log(characterName);
   try {
     const response = await fetch(
       `${URL}/?page=${pageNumber}&name=${characterName}&status=${characterStatus}&gender=${characterGender}&type=${characterType}&species=${characterSpecies}`

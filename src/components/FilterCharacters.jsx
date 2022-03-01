@@ -5,11 +5,14 @@ export const FilterCharacters = ({
   setUsernameInput,
   fetchedAllCharacters,
   setFilterCharacters,
+  // setUpdatedCurrentPageNumber,
 }) => {
   const [search, setSearch] = useState('');
   const [filteredCharacters, setFilteredCharacters] = useState([]);
   const [nonDupChacters, setNonDupCharacters] = useState([]);
+
   //  const [filterCharacters, setFilterCharacters] = useState([]);
+  // setUpdatedCurrentPageNumber(1);
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -27,6 +30,21 @@ export const FilterCharacters = ({
     setFilterCharacters(filteredCharacters);
   }, [filteredCharacters, search, setFilterCharacters, setFilteredCharacters]);
 
+  const convertAlphabetToLowerCase = (string) => {
+    const alphabets = 'abcdefghijklmnopqrstuvwxyz';
+    const word = string.split('');
+
+    return word
+      .map((letter) => {
+        if (alphabets.includes(letter.toLowerCase())) {
+          return letter.toLowerCase();
+        } else {
+          return letter;
+        }
+      })
+      .join('');
+  };
+
   const handleFilter = (event) => {
     event.preventDefault();
 
@@ -42,7 +60,10 @@ export const FilterCharacters = ({
       setFilteredCharacters([]);
     } else {
       const characters = fetchedAllCharacters.filter((character) => {
-        return character.name.toLowerCase().includes(search.toLowerCase());
+        return character.name
+          .toString()
+          .toLowerCase()
+          .includes(search.toLowerCase());
       });
       setFilteredCharacters(characters);
     }
