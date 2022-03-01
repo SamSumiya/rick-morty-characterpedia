@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { useCharacters } from '../hooks/useCharacters';
 import { FilterCharacters } from './FilterCharacters';
+import { DropDownFilters } from './DropDownFilters';
 import { Pagination } from './Pagination';
+
 import '../styles/Home.css';
 
 import { CharacterList } from '../view/CharacterList';
@@ -36,6 +38,8 @@ export const Home = () => {
     userGenderInput
   );
 
+  console.log(fetchedAllCharacters);
+
   if (isLoading) {
     return (
       <img
@@ -55,6 +59,12 @@ export const Home = () => {
         fetchedAllCharacters={fetchedAllCharacters}
         setFilterCharacters={setFilterCharacters}
         // setUpdatedCurrentPageNumber={setUpdatedCurrentPageNumber}
+      />
+      <DropDownFilters
+        setUserStatusInput={setUserStatusInput}
+        setUserSpeciesInput={setUserSpeciesInput}
+        setUserTypeInput={setUsetTypeInput}
+        setUserGenderInput={setUserGenderInput}
       />
 
       <div className="displayingCharacters-numbers-wrapper">
@@ -81,9 +91,8 @@ export const Home = () => {
         animate={{ opacity: 1 }}
         className="displayingCharacters-wrapper"
       >
-        {fetchedAllCharacters.map((character) => (
+        {/* {fetchedAllCharacters.map((character) => (
           <AnimatePresence key={character.id}>
-            {/* <ul key={character.id} className="displayCharacters-character"> */}
             <CharacterList
               image={character.image}
               name={character.name}
@@ -92,7 +101,25 @@ export const Home = () => {
               type={character.type}
             />
           </AnimatePresence>
-        ))}
+        ))} */}
+
+        {fetchedAllCharacters.length ? (
+          fetchedAllCharacters.map((character) => (
+            <AnimatePresence key={character.id}>
+              <CharacterList
+                image={character.image}
+                name={character.name}
+                status={character.status}
+                species={character.species}
+                type={character.type}
+              />
+            </AnimatePresence>
+          ))
+        ) : (
+          <>
+            <h1 className='no-matching-message'> No Matching Character...</h1>
+          </>
+        )}
       </motion.div>
       <Pagination
         totalPageNumbers={totalPageNumbers}

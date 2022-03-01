@@ -13,6 +13,9 @@ export const useCharacters = (
   const [totalPageNumbers, setTotalPageNumbers] = useState(0);
   const [count, setCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+
+  console.log(fetchedAllCharacters, 'dafdsafads');
+  
   useEffect(() => {
     setIsLoading(true);
     fetchAPICharactersInfo(
