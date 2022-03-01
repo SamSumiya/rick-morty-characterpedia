@@ -17,8 +17,7 @@ export const Home = () => {
   const [userGenderInput, setUserGenderInput] = useState('');
   const [filterCharacters, setFilterCharacters] = useState([]);
 
-  console.log(filterCharacters, 'filterCharacters');
-  console.log(usernameInput, 'usernameInput');
+
   const {
     fetchedAllCharacters,
     totalPageNumbers,
@@ -32,7 +31,9 @@ export const Home = () => {
     userSpeciesInput,
     userTypeInput,
     userGenderInput
-  );
+    );
+  
+ 
 
   if (isLoading) {
     return (
@@ -53,6 +54,7 @@ export const Home = () => {
         fetchedAllCharacters={fetchedAllCharacters}
         setFilterCharacters={setFilterCharacters}
       />
+      
       <div className="displayingCharacters-numbers-wrapper">
         <div className="displayingCharacters-found-numbers">
           {'·'} {count} {'characters found'} {'·'}
@@ -61,6 +63,8 @@ export const Home = () => {
           {`Showing ${fetchedAllCharacters.length}`}
         </div>
       </div>
+
+
       <Pagination
         totalPageNumbers={totalPageNumbers}
         currentPageNumber={currentPageNumber}

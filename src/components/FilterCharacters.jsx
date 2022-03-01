@@ -19,9 +19,6 @@ export const FilterCharacters = ({
     setSearch(value);
   };
 
-  console.log(search);
-  console.log(filteredCharacters);
-
   useEffect(() => {
     setUsernameInput(search);
   }, [search, setUsernameInput]);
