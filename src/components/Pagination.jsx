@@ -6,8 +6,17 @@ export const Pagination = ({
   totalPageNumbers,
   currentPageNumber,
   setCurrentPageNumber,
+  usernameInput,
 }) => {
   const [localPage, setLocalPage] = useState(currentPageNumber);
+
+  
+  useEffect(() => {
+    if (usernameInput) {
+      setCurrentPageNumber(1);
+    }
+  } , [setCurrentPageNumber, usernameInput]); 
+  
 
   const handleNextPage = () => {
     setCurrentPageNumber((prevPage) => (prevPage += 1));
@@ -17,19 +26,24 @@ export const Pagination = ({
     setCurrentPageNumber((prevPage) => (prevPage -= 1));
   };
 
-  const handleNegativeOutboundPage = () => {   
+  const handleNegativeOutboundPage = () => {
     setCurrentPageNumber(totalPageNumbers);
-  }
+  };
 
-  const handlePositiveOutboundPage = () => { 
+  const handlePositiveOutboundPage = () => {
     setCurrentPageNumber(1);
-  }
+  };
 
   useEffect(() => {
-    if (localPage < totalPageNumbers) {
+    if (localPage <= totalPageNumbers) {
       setCurrentPageNumber(localPage);
     }
   }, [localPage, setCurrentPageNumber, totalPageNumbers]);
+
+  const pageNumbers = [];
+  for (let i = 1; i <= totalPageNumbers; i++) {
+    pageNumbers.push(i);
+  }
 
   return (
     <div className="pagination-wrapper">
@@ -43,11 +57,22 @@ export const Pagination = ({
           <button onClick={handleNegativeOutboundPage}>Prev</button>
         )}
       </span>
-      <span style={{color: 'white'}}>
+      <span style={{ color: 'white' }}>
         {currentPageNumber} / {totalPageNumbers}
       </span>
       <span>
-        {currentPageNumber < totalPageNumbers ? (
+        {pageNumbers.map((page, id) => (
+          <button
+            key={page + id}
+            onClick={() => setLocalPage(page)}
+            className={localPage === page ? 'active' : ''}
+          >
+            {page}
+          </button>
+        ))}
+      </span>
+      <span>
+        {currentPageNumber <= totalPageNumbers ? (
           <button onClick={handleNextPage}>next</button>
         ) : (
           <button onClick={handlePositiveOutboundPage}>next</button>
