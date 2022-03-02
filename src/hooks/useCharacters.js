@@ -5,26 +5,24 @@ export const useCharacters = (
   pageNumber,
   usernameInput,
   userStatusInput,
+  userGenderInput,
   userSpeciesInput,
-  userTypeInput,
-  userGenderInput
+  userTypeInput
 ) => {
   const [fetchedAllCharacters, setFetchedAllCharacters] = useState([]);
   const [totalPageNumbers, setTotalPageNumbers] = useState(0);
   const [count, setCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log(fetchedAllCharacters, 'dafdsafads');
-  
   useEffect(() => {
     setIsLoading(true);
     fetchAPICharactersInfo(
       pageNumber,
       usernameInput,
       userStatusInput,
+      userGenderInput,
       userSpeciesInput,
-      userTypeInput,
-      userGenderInput
+      userTypeInput
     )
       .then(({ totalPages, fetchCharacters, count }) => {
         setTotalPageNumbers(totalPages);
@@ -33,14 +31,7 @@ export const useCharacters = (
       })
       .catch((error) => console.error(error))
       .finally(setIsLoading(false));
-  }, [
-    pageNumber,
-    usernameInput,
-    userStatusInput,
-    userSpeciesInput,
-    userTypeInput,
-    userGenderInput,
-  ]);
+  }, [pageNumber, userGenderInput, userSpeciesInput, userStatusInput, userTypeInput, usernameInput]);
 
   return {
     fetchedAllCharacters,

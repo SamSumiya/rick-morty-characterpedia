@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect  } from 'react';
 import { useCharacters } from '../hooks/useCharacters';
 import { FilterCharacters } from './FilterCharacters';
-import { DropDownFilters } from './DropDownFilters';
+// import { DropDownFilters } from './DropDownFilters';
 import { Pagination } from './Pagination';
 
 import '../styles/Home.css';
@@ -12,8 +12,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export const Home = () => {
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
-  // const [updatedCurrentPageNumber, setUpdatedCurrentPageNumber] =
-  //   useState(null);
   const [usernameInput, setUsernameInput] = useState('');
   const [userStatusInput, setUserStatusInput] = useState('');
   const [userSpeciesInput, setUserSpeciesInput] = useState('');
@@ -21,24 +19,46 @@ export const Home = () => {
   const [userGenderInput, setUserGenderInput] = useState('');
   const [filterCharacters, setFilterCharacters] = useState([]);
 
-  console.log(currentPageNumber);
+  // console.log(usernameInput, 'usernameInput');
+  // console.log(userStatusInput, 'userStatusInput');
+  // console.log(userSpeciesInput, 'userSpeciesInput');
+  console.log(userTypeInput, 'userTypeInput');
+  // console.log(userGenderInput, 'userGenderInput');
+  console.log(currentPageNumber, 'currentPageNumber');
 
-  const {
-    fetchedAllCharacters,
-    totalPageNumbers,
-    count,
-    isLoading,
-    noDataFound,
-  } = useCharacters(
-    currentPageNumber,
-    usernameInput,
-    userStatusInput,
-    userSpeciesInput,
-    userTypeInput,
-    userGenderInput
-  );
+  // useEffect(() => {
+  //   if (
+  //     usernameInput ||
+  //     userStatusInput ||
+  //     userSpeciesInput ||
+  //     userTypeInput ||
+  //     userGenderInput
+  //   ) {
+  //     setCurrentPageNumber(1);
+  //   }
+  // }, [
+  //   userTypeInput,
+  //   userStatusInput,
+  //   userGenderInput,
+  //   usernameInput,
+  //   userSpeciesInput,
+  //   setCurrentPageNumber,
+  // ]);
 
-  console.log(fetchedAllCharacters);
+  
+  console.log(currentPageNumber, usernameInput, 'currentPageNumber !!!!!!!!!!!!!'); 
+  
+  const { fetchedAllCharacters, totalPageNumbers, count, isLoading } =
+    useCharacters(
+      currentPageNumber,
+      usernameInput,
+      userStatusInput,
+      userGenderInput,
+      userSpeciesInput,
+      userTypeInput
+    );
+  
+
 
   if (isLoading) {
     return (
@@ -58,14 +78,23 @@ export const Home = () => {
         // totalPageNumbers={totalPageNumbers}
         fetchedAllCharacters={fetchedAllCharacters}
         setFilterCharacters={setFilterCharacters}
-        // setUpdatedCurrentPageNumber={setUpdatedCurrentPageNumber}
-      />
-      <DropDownFilters
         setUserStatusInput={setUserStatusInput}
+        setUserGenderInput={setUserGenderInput}
         setUserSpeciesInput={setUserSpeciesInput}
         setUserTypeInput={setUsetTypeInput}
-        setUserGenderInput={setUserGenderInput}
+        setCurrentPageNumber={setCurrentPageNumber} 
+        usernameInput={usernameInput}
+        userStatusInput={userStatusInput}
+        userTypeInput={userTypeInput}
+        userGenderInput={userGenderInput}
+        // setUpdatedCurrentPageNumber={setUpdatedCurrentPageNumber}
       />
+      {/* <DropDownFilters
+        setUserStatusInput={setUserStatusInput}
+        setUserGenderInput={setUserGenderInput}
+        setUserSpeciesInput={setUserSpeciesInput}
+        setUserTypeInput={setUsetTypeInput}
+      /> */}
 
       <div className="displayingCharacters-numbers-wrapper">
         <div className="displayingCharacters-found-numbers">
@@ -117,7 +146,7 @@ export const Home = () => {
           ))
         ) : (
           <>
-            <h1 className='no-matching-message'> No Matching Character...</h1>
+            <h1 className="no-matching-message"> No Matching Character...</h1>
           </>
         )}
       </motion.div>

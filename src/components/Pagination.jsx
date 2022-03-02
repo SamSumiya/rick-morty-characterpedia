@@ -7,17 +7,20 @@ export const Pagination = ({
   currentPageNumber,
   setCurrentPageNumber,
   usernameInput,
+  userStatusInput,
+  userSpeciesInput,
+  userTypeInput,
+  userGenderInput,
 }) => {
   const [localPage, setLocalPage] = useState(currentPageNumber);
 
-  
-  useEffect(() => {
-    if (usernameInput) {
-      setCurrentPageNumber(1);
-    }
-  } , [setCurrentPageNumber, usernameInput]); 
-
   console.log(currentPageNumber);
+  
+  // useEffect(() => {
+  //   if (usernameInput || userStatusInput || userSpeciesInput || userTypeInput || userGenderInput) {
+  //     setCurrentPageNumber(1);
+  //   }
+  // } , [setCurrentPageNumber, userGenderInput, userSpeciesInput, userStatusInput, userTypeInput, usernameInput]); 
 
   const handleNextPage = () => {
     setCurrentPageNumber((prevPage) => {
