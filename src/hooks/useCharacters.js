@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { fetchAPICharactersInfo } from '../service/getAPICharactersInfo';
 
 export const useCharacters = (
@@ -13,6 +13,24 @@ export const useCharacters = (
   const [totalPageNumbers, setTotalPageNumbers] = useState(0);
   const [count, setCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const pageRef = useRef(1);
+
+  useEffect(() => {
+    if (
+      usernameInput ||
+      userStatusInput ||
+      userGenderInput ||
+      userSpeciesInput ||
+      userTypeInput
+    )
+      pageNumber = pageRef.current;
+  }, [
+    usernameInput,
+    userStatusInput,
+    userGenderInput,
+    userSpeciesInput,
+    userTypeInput,
+  ]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -31,7 +49,14 @@ export const useCharacters = (
       })
       .catch((error) => console.error(error))
       .finally(setIsLoading(false));
-  }, [pageNumber, userGenderInput, userSpeciesInput, userStatusInput, userTypeInput, usernameInput]);
+  }, [
+    pageNumber,
+    userGenderInput,
+    userSpeciesInput,
+    userStatusInput,
+    userTypeInput,
+    usernameInput,
+  ]);
 
   return {
     fetchedAllCharacters,

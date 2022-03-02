@@ -2,9 +2,13 @@
 
 
 
+# Task 
+  1. Create a reset all button in filterCharacters filter component
+
 
 # Issues
   1. When not on the first page, dropdown menu will search based on the current page number and often results not mathcing characters 
+  2. Pagination -- only show 5 result max 
   ## Not solved 
   1. 7+7 Morty and rick 716 cannot be fetched??
   2. ## When input has one single string it does not give a list of items to display, so when I am on a page > 1 and search with a single string, it renders an error message
