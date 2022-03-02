@@ -24,6 +24,8 @@ export const Home = () => {
   // console.log(userGenderInput, 'userGenderInput');
   // console.log(currentPageNumber, 'currentPageNumber');
 
+
+  console.log(userGenderInput, 'userGenderInput');
   const { fetchedAllCharacters, totalPageNumbers, count, isLoading } =
     useCharacters(
       currentPageNumber,
@@ -55,6 +57,7 @@ export const Home = () => {
         setUserGenderInput={setUserGenderInput}
         setUserSpeciesInput={setUserSpeciesInput}
         setUserTypeInput={setUsetTypeInput}
+        isLoading={isLoading}
       />
 
       <div className="displayingCharacters-numbers-wrapper">
