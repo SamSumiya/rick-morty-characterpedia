@@ -14,8 +14,6 @@ export const Pagination = ({
 }) => {
   const [localPage, setLocalPage] = useState(currentPageNumber);
 
-  console.log(currentPageNumber);
-  
   // useEffect(() => {
   //   if (usernameInput || userStatusInput || userSpeciesInput || userTypeInput || userGenderInput) {
   //     setCurrentPageNumber(1);

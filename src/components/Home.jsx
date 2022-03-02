@@ -1,13 +1,11 @@
-import { useState, useEffect  } from 'react';
+import { useState } from 'react';
 import { useCharacters } from '../hooks/useCharacters';
 import { FilterCharacters } from './FilterCharacters';
-// import { DropDownFilters } from './DropDownFilters';
 import { Pagination } from './Pagination';
 
 import '../styles/Home.css';
 
 import { CharacterList } from '../view/CharacterList';
-
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const Home = () => {
@@ -22,32 +20,10 @@ export const Home = () => {
   // console.log(usernameInput, 'usernameInput');
   // console.log(userStatusInput, 'userStatusInput');
   // console.log(userSpeciesInput, 'userSpeciesInput');
-  console.log(userTypeInput, 'userTypeInput');
+  // console.log(userTypeInput, 'userTypeInput');
   // console.log(userGenderInput, 'userGenderInput');
-  console.log(currentPageNumber, 'currentPageNumber');
+  // console.log(currentPageNumber, 'currentPageNumber');
 
-  // useEffect(() => {
-  //   if (
-  //     usernameInput ||
-  //     userStatusInput ||
-  //     userSpeciesInput ||
-  //     userTypeInput ||
-  //     userGenderInput
-  //   ) {
-  //     setCurrentPageNumber(1);
-  //   }
-  // }, [
-  //   userTypeInput,
-  //   userStatusInput,
-  //   userGenderInput,
-  //   usernameInput,
-  //   userSpeciesInput,
-  //   setCurrentPageNumber,
-  // ]);
-
-  
-  console.log(currentPageNumber, usernameInput, 'currentPageNumber !!!!!!!!!!!!!'); 
-  
   const { fetchedAllCharacters, totalPageNumbers, count, isLoading } =
     useCharacters(
       currentPageNumber,
@@ -57,8 +33,8 @@ export const Home = () => {
       userSpeciesInput,
       userTypeInput
     );
-  
 
+  console.log(fetchedAllCharacters);
 
   if (isLoading) {
     return (
@@ -73,28 +49,13 @@ export const Home = () => {
     <>
       <FilterCharacters
         setUsernameInput={setUsernameInput}
-        // setCurrentPageNumber={setCurrentPageNumber}
-        // currentPageNumber={currentPageNumber}
-        // totalPageNumbers={totalPageNumbers}
         fetchedAllCharacters={fetchedAllCharacters}
         setFilterCharacters={setFilterCharacters}
         setUserStatusInput={setUserStatusInput}
         setUserGenderInput={setUserGenderInput}
         setUserSpeciesInput={setUserSpeciesInput}
         setUserTypeInput={setUsetTypeInput}
-        setCurrentPageNumber={setCurrentPageNumber} 
-        usernameInput={usernameInput}
-        userStatusInput={userStatusInput}
-        userTypeInput={userTypeInput}
-        userGenderInput={userGenderInput}
-        // setUpdatedCurrentPageNumber={setUpdatedCurrentPageNumber}
       />
-      {/* <DropDownFilters
-        setUserStatusInput={setUserStatusInput}
-        setUserGenderInput={setUserGenderInput}
-        setUserSpeciesInput={setUserSpeciesInput}
-        setUserTypeInput={setUsetTypeInput}
-      /> */}
 
       <div className="displayingCharacters-numbers-wrapper">
         <div className="displayingCharacters-found-numbers">
@@ -120,18 +81,6 @@ export const Home = () => {
         animate={{ opacity: 1 }}
         className="displayingCharacters-wrapper"
       >
-        {/* {fetchedAllCharacters.map((character) => (
-          <AnimatePresence key={character.id}>
-            <CharacterList
-              image={character.image}
-              name={character.name}
-              status={character.status}
-              species={character.species}
-              type={character.type}
-            />
-          </AnimatePresence>
-        ))} */}
-
         {fetchedAllCharacters.length ? (
           fetchedAllCharacters.map((character) => (
             <AnimatePresence key={character.id}>

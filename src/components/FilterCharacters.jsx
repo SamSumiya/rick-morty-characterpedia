@@ -1,6 +1,5 @@
 import '../styles/FilterCharacters.css';
-import { useState, useEffect, useRef } from 'react';
-// import { useForm } from 'react-hook-form';
+import { useState, useEffect } from 'react';
 
 export const FilterCharacters = ({
   setUsernameInput,
@@ -10,13 +9,6 @@ export const FilterCharacters = ({
   setUserGenderInput,
   setUserSpeciesInput,
   setUserTypeInput,
-  // setCurrentPageNumber,
-  // usernameInput,
-  // userStatusInput,
-  // userSpeciesInput,
-  // userTypeInput,
-  // userGenderInput,
-  // setUpdatedCurrentPageNumber,
 }) => {
   const [search, setSearch] = useState('');
   const [filteredCharacters, setFilteredCharacters] = useState([]);
@@ -30,22 +22,25 @@ export const FilterCharacters = ({
     setSearch(value);
   };
 
-
   useEffect(() => {
     setUsernameInput(search);
   }, [search, setUsernameInput]);
 
   useEffect(() => {
     setFilterCharacters(filteredCharacters);
-  }, [filteredCharacters, search, setFilterCharacters, setFilteredCharacters]);
+  }, [filteredCharacters, search, setFilterCharacters, setFilteredCharacters])
+
+  console.log(filteredCharacters);
 
   const handleReset = () => {
-    // setUsernameInput('')
+    setUsernameInput('')
     setFilterCharacters('');
     setUserStatusInput('');
     setUserGenderInput('');
-    setUserSpeciesInput('');
+    setUserSpeciesInput('')
   };
+
+
 
   const handleFilter = (event) => {
     event.preventDefault();
@@ -125,16 +120,12 @@ export const FilterCharacters = ({
           })} */}
         </div>
       )}
-      {/* <button onClick={handleFormSubmit}>Search</button> */}
-      <label className="fom=label">Status</label>
       <select
         className="form-field"
         type="dropdown"
         name="status"
-        // {...register('value_name')}
         onChange={(event) => {
           setUserStatusInput(event.target.value);
-          // reset();
         }}
       >
         <option value="">Status</option>
@@ -146,8 +137,6 @@ export const FilterCharacters = ({
         className="form-field"
         type="dropdown"
         name="gender"
-        // {...register('value_name')}
-
         onChange={(event) => {
           console.log(event.target.value, 'event.target.value');
           setUserGenderInput(event.target.value);
@@ -164,10 +153,8 @@ export const FilterCharacters = ({
         className="form-field"
         type="dropdown"
         name="species"
-        // {...register('value_name')}
         onChange={(event) => {
           setUserSpeciesInput(event.target.value);
-          // reset();
         }}
       >
         <option value="">Species</option>
@@ -180,7 +167,6 @@ export const FilterCharacters = ({
         <option value="disease">Disease</option>
         <option value="robot">Robot</option>
         <option value="cronenberg">Cronenberg</option>
-        <option value="planet">Planet</option>
         <option value="unknown">Unknown</option>
       </select>
 
@@ -188,16 +174,15 @@ export const FilterCharacters = ({
         className="form-field"
         type="dropdown"
         name="type"
-        // {...register('value_name')}
         onChange={(event) => {
           setUserTypeInput(event.target.value);
-          // reset();
         }}
       >
         <option value="">Type</option>
         <option value="Bird-Person">Bird-Person</option>
         <option value="Monster">Monster</option>
         <option value="Superhuman">Superhuman</option>
+        <option value="planet">Planet</option>
         <option value="Clone">Clone</option>
       </select>
 
