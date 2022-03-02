@@ -8,30 +8,32 @@ export const fetchAPICharactersInfo = async (
   characterSpecies,
   characterType
 ) => {
-  const pages = [1] 
-  pages.push(pageNumber)
+  const pages = [1];
+  pages.push(pageNumber);
 
   console.log(pages, pageNumber, 'dadfdasfdasfsaf');
 
   try {
     let response;
     if (
-      (
-        // characterName !== '' ||
-      characterStatus !== '' ||
-      characterGender !== '' ||
-      characterSpecies !== '' ||
-      characterType !== '')
+      characterType !== ''
     ) {
       response = await fetch(
         `${URL}/?page=${
-          pageNumber !== 1 ? pages[0] : null
+          pageNumber > 1 ? pages[0] : null
         }&name=${characterName}&status=${characterStatus}&gender=${characterGender}&type=${characterType}&species=${characterSpecies}`
       );
-    }
-    else  {
+    } else if (
+      characterStatus !== '' ||
+      characterGender !== '' ||
+      characterSpecies !== ''
+    ) {
       response = await fetch(
-        `${URL}/?page=${pages[1]}&name=${characterName}&status=${characterStatus}&gender=${characterGender}&type=${characterType}&species=${characterSpecies}`
+        `${URL}/?page=${pageNumber}&name=${characterName}&status=${characterStatus}&gender=${characterGender}&type=${characterType}&species=${characterSpecies}`
+      );
+    } else {
+      response = await fetch(
+        `${URL}/?page=${pageNumber}&name=${characterName}&status=${characterStatus}&gender=${characterGender}&type=${characterType}&species=${characterSpecies}`
       );
     }
 
