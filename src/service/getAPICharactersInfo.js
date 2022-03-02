@@ -1,23 +1,46 @@
 const URL = 'https://rickandmortyapi.com/api/character';
 
 export const fetchAPICharactersInfo = async (
-  pageNumber = 1,
-  characterName = '',
-  characterStatus = '',
-  characterGender = '',
-  characterType = '',
-  characterSpecies = ''
+  pageNumber,
+  characterName,
+  characterStatus,
+  characterGender,
+  characterSpecies,
+  characterType
 ) => {
-  console.log(characterName);
+  const pages = [1] 
+  pages.push(pageNumber)
+
+  console.log(pages, pageNumber, 'dadfdasfdasfsaf');
+
   try {
-    const response = await fetch(
-      `${URL}/?page=${pageNumber}&name=${characterName}&status=${characterStatus}&gender=${characterGender}&type=${characterType}&species=${characterSpecies}`
-    );
+    let response;
+    if (
+      (
+        // characterName !== '' ||
+      characterStatus !== '' ||
+      characterGender !== '' ||
+      characterSpecies !== '' ||
+      characterType !== '')
+    ) {
+      response = await fetch(
+        `${URL}/?page=${
+          pageNumber !== 1 ? pages[0] : null
+        }&name=${characterName}&status=${characterStatus}&gender=${characterGender}&type=${characterType}&species=${characterSpecies}`
+      );
+    }
+    else  {
+      response = await fetch(
+        `${URL}/?page=${pages[1]}&name=${characterName}&status=${characterStatus}&gender=${characterGender}&type=${characterType}&species=${characterSpecies}`
+      );
+    }
 
     let responseData = await response.json();
     let totalPages;
     let count;
     let fetchCharacters;
+
+    console.log(responseData, 'responseData!!!!!');
 
     if (response.status === 404) {
       totalPages = 0;
@@ -28,7 +51,6 @@ export const fetchAPICharactersInfo = async (
       count = responseData.info.count;
       fetchCharacters = responseData.results;
     }
-
     return { totalPages, fetchCharacters, count };
   } catch (error) {
     console.error(error);
