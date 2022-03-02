@@ -199,7 +199,7 @@ export const FilterCharacters = ({
         className="form-field"
         type="dropdown"
         name="species"
-        selectSpeciesRef
+        ref={selectSpeciesRef}
         onChange={(event) => {
           setUserSpeciesInput(event.target.value);
         }}
@@ -221,7 +221,7 @@ export const FilterCharacters = ({
         className="form-field"
         type="dropdown"
         name="type"
-        selectTypeRef
+        ref={selectTypeRef}
         onChange={(event) => {
           setUserTypeInput(event.target.value);
         }}
