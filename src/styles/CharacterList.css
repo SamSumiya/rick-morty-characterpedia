@@ -1,0 +1,103 @@
+.displayCharacters-character {
+  position: relative;
+  /* display: inline-block; */
+  width: 90%;
+  border-bottom: 1px dotted rgb(53, 51, 51);
+  background-color: #1a212b;
+  border: 1.5px solid #474950;
+  border-radius: 10px;
+}
+
+.displayCharacters-image {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  border-radius: 8px 8px 0px 0px;
+}
+
+.displayCharacters-name_wrapper {
+  position: relative;
+  display: inline-block;
+  margin: 1rem 1.1rem;
+}
+
+.ellipsis-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 1.3rem;
+  transition: all 0.6s ease-in-out;
+  color: rgb(195, 189, 189);
+}
+
+.displayCharacters-name_wrapper .displayCharacters-name {
+  visibility: hidden;
+  width: 100%;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 99;
+}
+
+.displayCharacters-name_wrapper:hover .displayCharacters-name {
+  visibility: visible;
+  color: rgb(240, 238, 238);
+  background-color: rgb(53, 53, 53);
+  padding: .8rem 1.2rem;
+  font-size: 1.7rem;
+  width: max-content;
+  white-space: nowrap;
+}
+
+.displayCharacters-species {
+  font-size: .9rem;
+  color: #a08d2a;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  margin: 0.3rem 0.5rem;
+  padding: 0.1rem 0.5rem;
+}
+
+
+/* Type */ 
+
+.displayCharacters-type {
+  font-size: 0.7em;
+  color: #76d7d1;
+  letter-spacing: 0.08rem;
+  font-size: bold;
+  display: flex; 
+  justify-content: flex-start; 
+  flex-direction: flex-start; 
+  margin: 0.3rem 0.5rem; 
+  
+  text-overflow: ellipsis;
+  width: 100%;
+  padding: 0.1rem 0.5rem;
+}
+
+.showmore-showless {
+  color: rgb(195, 189, 189);
+  display: flex;
+
+  justify-content: column;  
+  flex-direction: flex-end;
+  align-items: column;
+  margin: 0 auto; 
+}
+
+.displayCharacters-status { 
+    width: 85%;
+     content: ""; 
+     display: block;
+     margin: 0 auto; 
+  border-top: #a1a4a5 1px solid;
+}

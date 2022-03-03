@@ -1,8 +1,16 @@
 import React from 'react';
-import '../styles/Home.css';
+import '../styles/CharacterList.css';
 import { motion } from 'framer-motion';
 
 export const CharacterList = ({ image, name, status, species, type }) => {
+  const [clickForMore, setClickForMore] = React.useState(false);
+
+ 
+
+  const handleClickForMore = () => {
+    setClickForMore(!clickForMore);
+  };
+
   return (
     <motion.div
       layout
@@ -16,11 +24,22 @@ export const CharacterList = ({ image, name, status, species, type }) => {
     >
       {
         <ul className="displayCharacters-character">
-          <img src={image} alt={image} />
-          <li className="displayCharacters-name">{name}</li>
-          <li>{status}</li>
-          <li>{species}</li>
-          <button> Details </button>{' '}
+          <img src={image} alt={image} className="displayCharacters-image" />
+          <div className="displayCharacters-name_wrapper">
+            <div className="ellipsis-name">{name}</div>
+            <li className="displayCharacters-name">{name}</li>
+          </div>
+          <li className="displayCharacters-species">{species}</li>
+          <li className="displayCharacters-type">
+            {type === ''
+              ? 'Type: None'
+              : `Type: ${clickForMore ? type : type.slice(0, 3)}`}
+            <div onClick={handleClickForMore} className='showmore-showless'>
+              {type==='' ? '': clickForMore ? '...more' : '...less'} 
+            </div>
+          </li>
+          <li className="displayCharacters-status">{status}</li>
+          <button> Details </button>
         </ul>
       }
     </motion.div>

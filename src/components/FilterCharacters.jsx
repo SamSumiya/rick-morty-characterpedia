@@ -16,6 +16,8 @@ export const FilterCharacters = ({
   const [filteredCharacters, setFilteredCharacters] = useState([]);
   const [nonDupChacters, setNonDupCharacters] = useState([]);
 
+  console.log(fetchedAllCharacters);
+
   const handleReset = () => {
     setUsernameInput('');
     setFilterCharacters('');
@@ -47,10 +49,7 @@ export const FilterCharacters = ({
   const selectSpeciesRef = useRef();
   const selectTypeRef = useRef();
 
-  // console.log(selectUserInputRef.current.value);
-
   const onClear = () => {
-
     selectUserInputRef.current.value = ' ';
     setSearch('')
     selectStatusRef.current.innerHTML = `
