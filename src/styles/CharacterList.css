@@ -48,37 +48,35 @@
   visibility: visible;
   color: rgb(240, 238, 238);
   background-color: rgb(53, 53, 53);
-  padding: .8rem 1.2rem;
+  padding: 0.8rem 1.2rem;
   font-size: 1.7rem;
   width: max-content;
   white-space: nowrap;
 }
 
 .displayCharacters-species {
-  font-size: .9rem;
+  font-size: 0.9rem;
   color: #a08d2a;
   font-weight: bold;
   letter-spacing: 0.1rem;
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
-  margin: 0.3rem 0.5rem;
-  padding: 0.1rem 0.5rem;
+  margin: 0.1rem 0.2rem;
+  padding: 0.1rem 0.6rem;
 }
 
-
-/* Type */ 
+/* Type */
 
 .displayCharacters-type {
   font-size: 0.7em;
   color: #76d7d1;
   letter-spacing: 0.08rem;
   font-size: bold;
-  display: flex; 
-  justify-content: flex-start; 
-  flex-direction: flex-start; 
-  margin: 0.3rem 0.5rem; 
-  
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: flex-start;
+  margin: .2rem 0.3rem;
   text-overflow: ellipsis;
   width: 100%;
   padding: 0.1rem 0.5rem;
@@ -88,16 +86,23 @@
   color: rgb(195, 189, 189);
   display: flex;
 
-  justify-content: column;  
+  justify-content: column;
   flex-direction: flex-end;
   align-items: column;
-  margin: 0 auto; 
+  margin: 0 auto;
 }
 
-.displayCharacters-status { 
-    width: 85%;
-     content: ""; 
-     display: block;
-     margin: 0 auto; 
+/*  Status  */
+.displayCharacters-status {
+  width: 85%;
+  content: '';
+  display: block;
+  margin: 0 auto;
   border-top: #a1a4a5 1px solid;
+  letter-spacing: .1rem;
+  font-weight: bold;
+  font-size: .8rem;
+  display: flex; 
+  margin: .1rem 0.6rem; 
+  padding : .2rem 0.3rem; 
 }
