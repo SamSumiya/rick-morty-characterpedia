@@ -20,6 +20,8 @@
   3. Search results have duplicate:  -- needs improvement 
   4. Pagination can go outbound 
   5. Needs to get data back from the api based on page, name, gender -- could use useReducer to improve code readbility
+  6. Reset did not work for the search bar, so set the current value to empty string and local state to empty string as well 
+  7. 
 
 
 
