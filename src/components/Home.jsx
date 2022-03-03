@@ -69,10 +69,9 @@ export const Home = () => {
         isLoading={isLoading}
         setIsLoading={setIsLoading}
       />
-
       <div className="displayingCharacters-numbers-wrapper">
         <div className="displayingCharacters-found-numbers">
-          {'·'} {count} {'characters found'} {'·'}
+          {'·'} <span style={{ borderBottom: '2px solid gray', color: '#ded5d5', fontSize: '.8rem'}}>{count}</span> {'characters found'} {'·'}
         </div>
         <div className="displayingCharacters-page-length">
           {`Showing ${fetchedAllCharacters.length}`}

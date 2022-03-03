@@ -2,13 +2,20 @@ import React from 'react';
 import '../styles/CharacterList.css';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
- import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faGrin } from '@fortawesome/free-solid-svg-icons';
 import { faSkull } from '@fortawesome/free-solid-svg-icons';
 import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 import { faLocationArrow } from '@fortawesome/free-solid-svg-icons';
 
-export const CharacterList = ({ image, name, status, species, type, location }) => {
+export const CharacterList = ({
+  image,
+  name,
+  status,
+  species,
+  type,
+  location,
+}) => {
   const [clickForMore, setClickForMore] = React.useState(false);
 
   const handleClickForMore = () => {
@@ -18,14 +25,23 @@ export const CharacterList = ({ image, name, status, species, type, location }) 
   return (
     <motion.div
       layout
+      initial={{ opacity: 0 }}
       transition={{
         delay: 0.2,
         default: { duration: 0.3, ease: 'easeInOut' },
       }}
-      animate={{ opacity: 2, backgroundColor: 'tint' }}
-      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, backgroundColor: 'tint' }}
       exit={{ opacity: 0 }}
     >
+      <div className="status-banner-wrapper">
+        {status === 'Alive' ? (
+          <div className="status-banner-alive"> Alive </div>
+        ) : status === 'Dead' ? (
+          <div className="status-banner-dead"> Dead </div>
+        ) : status === 'unknown' ? (
+          <div className="status-banner-unknown"> Unknown </div>
+        ) : null}
+      </div>
       {
         <ul className="displayCharacters-character">
           <img src={image} alt={image} className="displayCharacters-image" />
@@ -80,13 +96,20 @@ export const CharacterList = ({ image, name, status, species, type, location }) 
               icon={faLocationArrow}
               className="character-location-icon"
             />
-            <div className="character-location-details">{location}</div>
+            <motion.div
+              className="character-location-details"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              layout
+            >
+              {location}
+            </motion.div>
           </li>
 
           {/* <div className="character-button-wrapper"> */}
           <button className="character-button-wrapper">
             <div className="character-button">
-              <span>
+              <span className='character-button_arrow'>
                 Details <FontAwesomeIcon icon={faArrowRight} />
               </span>
             </div>

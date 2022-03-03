@@ -138,6 +138,7 @@ export const FilterCharacters = ({
         value={search}
         onChange={handleFilter}
       />
+
       {search !== '' && (
         <div className="search-characterNames">
           {nonDupChacters.map((name, id) => {
@@ -152,6 +153,8 @@ export const FilterCharacters = ({
               </div>
             );
           })}
+
+          
           {/* {filteredCharacters.map((character) => {
             return (
               <div key={character.id}>
