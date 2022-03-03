@@ -21,10 +21,69 @@
   border-radius: 8px 8px 0px 0px;
 }
 
+/* Status Banner */
+.status-banner-wrapper {
+  position: relative;
+  float: left;
+  width: min-content;
+  padding: 0.4rem 0.5rem;
+  /* z-index: 1; */
+}
+.status-banner-alive {
+  color: #02ff28;
+  font-size: 0.8rem;
+  background-color: #14181f;
+  opacity: 0.6;
+  letter-spacing: 1px;
+  position: absolute;
+  top: 1rem;
+  left: 6.5rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  z-index: 1;
+}
+
+.status-banner-dead {
+  color: #fe0245;
+  font-size: 0.8rem;
+  opacity: 0.8;
+  letter-spacing: 1px;
+  background-color: #11151c;
+  letter-spacing: 1px;
+  position: absolute;
+  top: 1rem;
+  left: 6.5rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  z-index: 1;
+}
+
+.status-banner-unknown {
+  color: #dc02fe;
+  font-size: 0.8rem;
+  opacity: 0.8;
+  letter-spacing: 1px;
+  background-color: #23262b;
+  letter-spacing: 1px;
+  position: absolute;
+  top: 0.9rem;
+  left: 5rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  z-index: 1;
+}
+
+/* Character names */
 .displayCharacters-name_wrapper {
   position: relative;
   display: inline-block;
-  margin: 1rem 1.1rem;
+  margin: .7rem 1rem;
 }
 
 .ellipsis-name {
@@ -36,65 +95,6 @@
   color: rgb(195, 189, 189);
 }
 
-/* Status Banner */
-.status-banner-wrapper {
-  position: relative;
-  float: left;
-  z-index: 999;
-  /* background-color: #11151c; */
-  width: min-content;
-  /* opacity: 0.8; */
-  padding: 0.3rem 0.5rem;
-}
-.status-banner-alive {
-  color: #02ff28;
-  font-size: 0.8rem;
-  background-color: #11151c;
-  opacity: 0.8;
-  letter-spacing: 1px;
-  position: relative;
-  top: 2.2rem;
-  left: 5.7rem;
-  padding: 0.3rem 0.5rem;
-  border-radius: 5px;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-
-.status-banner-dead {
-  color: #fe0245;
-  font-size: 0.8rem;
-  opacity: 0.6;
-  letter-spacing: 1px;
-  background-color: #11151c;
-  opacity: 0.8;
-  letter-spacing: 1px;
-  position: relative;
-  top: 2.2rem;
-  left: 5.7rem;
-  padding: 0.3rem 0.5rem;
-  border-radius: 5px;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-
-.status-banner-unknown {
-  color: #dc02fe;
-  font-size: 0.8rem;
-  opacity: 0.6;
-  letter-spacing: 1px;
-  background-color: #11151c;
-  opacity: 0.8;
-  letter-spacing: 1px;
-  position: relative;
-  top: 2.1rem;
-  left: 4rem;
-  padding: 0.3rem 0.5rem;
-  border-radius: 5px;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-
 .displayCharacters-name_wrapper .displayCharacters-name {
   visibility: hidden;
   width: 100%;
@@ -102,11 +102,11 @@
   color: #fff;
   text-align: center;
   border-radius: 6px;
-  padding: 5px 0;
+  padding: 3px 0;
 
   /* Position the tooltip */
   position: absolute;
-  z-index: 99;
+  z-index: 2;
 }
 
 .displayCharacters-name_wrapper:hover .displayCharacters-name {
@@ -114,9 +114,13 @@
   color: rgb(240, 238, 238);
   background-color: rgb(53, 53, 53);
   padding: 0.8rem 1.2rem;
-  font-size: 1.7rem;
-  width: max-content;
-  white-space: nowrap;
+  font-size: 1.1rem;
+  width: min-content;
+  white-space: wrap;
+  /* display:flex; 
+  flex-direction: flex-start; */
+  float: left;
+  /* z-index: 999; */
 }
 
 .displayCharacters-species {
@@ -127,7 +131,7 @@
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
-  margin: 0.1rem 0.2rem;
+  margin: -.1rem 0.15rem;
   padding: 0.1rem 0.6rem;
 }
 
@@ -168,8 +172,8 @@
   font-weight: bold;
   font-size: 0.8rem;
   display: flex;
-  margin: 0.1rem 0.6rem;
-  padding: 0.2rem 0.3rem;
+  margin: 0.2rem 0.6rem;
+  padding: 0.3rem 0.2rem;
 }
 
 /* Location */
@@ -187,6 +191,7 @@
 .character-location-icon {
   color: rgb(222, 218, 221);
   font-size: 0.7rem;
+  margin: 0rem -.1rem;
 }
 
 .character-location-details {
@@ -259,15 +264,3 @@
 
 /* Arrow */
 
-.character-button_arrow:hover {
-  animation: moveToLeft 0.5s ease-in-out;
-}
-
-@keyframes moveToLeft {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(30%);
-  }
-}

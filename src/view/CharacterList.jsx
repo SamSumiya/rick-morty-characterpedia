@@ -49,13 +49,13 @@ export const CharacterList = ({
             <div className="ellipsis-name">{name}</div>
             <li className="displayCharacters-name">{name}</li>
           </div>
-          <li className="displayCharacters-species">{species.slice(0, 12)}</li>
+          <li className="displayCharacters-species">{species.slice(0, 13)}</li>
           <li className="displayCharacters-type">
             {type === ''
               ? 'Type: None'
               : `Type: ${clickForMore ? type : type.slice(0, 5)}`}
             <div onClick={handleClickForMore} className="showmore-showless">
-              {type === '' ? '' : clickForMore ? '...more' : '...less'}
+              {type.length < 10  ? '' : clickForMore ? '...more' : '...less'}
             </div>
           </li>
           <li className="displayCharacters-status">
