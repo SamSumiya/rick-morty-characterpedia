@@ -76,7 +76,7 @@
   display: flex;
   justify-content: flex-start;
   flex-direction: flex-start;
-  margin: .2rem 0.3rem;
+  margin: 0.2rem 0.3rem;
   text-overflow: ellipsis;
   width: 100%;
   padding: 0.1rem 0.5rem;
@@ -99,10 +99,81 @@
   display: block;
   margin: 0 auto;
   border-top: #a1a4a5 1px solid;
-  letter-spacing: .1rem;
+  letter-spacing: 0.1rem;
   font-weight: bold;
-  font-size: .8rem;
+  font-size: 0.8rem;
+  display: flex;
+  margin: 0.1rem 0.6rem;
+  padding: 0.2rem 0.3rem;
+}
+
+/* Location */
+.character-location {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  margin: 0.1rem 0.6rem;
+  padding: 0.1rem 0.2rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.character-location-icon {
+  color: rgb(222, 218, 221);
+  font-size: 0.7rem;
+}
+
+.character-location-details {
+  font-size: 0.58rem;
+  color: rgb(205, 198, 205);
+  margin: 0 0.4rem;
+  display: flex;
+  flex-direction: flex-start;
+  font-weight: bold;
+  letter-spacing: 0.1px;
+  width: 100%;
+  /* white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; */
+  transition: all 0.6s ease-in-out;
+  animation: fadeIn 0.6s ease-in-out;
+  cursor: pointer;
+}
+
+.character-location-details:hover {
+  overflow: visible;
+  white-space: normal;
+  text-overflow: ellipsis;
+  overflow: none;
+}
+
+/* Button */
+
+.character-button-wrapper {
+  padding: 0.6rem 0.8rem;
+  border-radius: 5px;
+  margin: 0.9rem 0.5rem;
+  position: relative;
+    box-shadow: 0px 3px 0px #5faba0;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.character-button-wrapper:hover {
+  background-color: #81e6d9;
+  box-shadow: 0px 4px 0px #5faba0;
+}
+
+.character-button-wrapper:active {
+  box-shadow: none;
+  background-color: #58a298;
+  box-shadow: 0px 2px 0px #000000;
+  top: 2px;
+}
+
+.character-button {
+  color:rgb(0, 0, 0); 
   display: flex; 
-  margin: .1rem 0.6rem; 
-  padding : .2rem 0.3rem; 
+  justify-content: center;
 }

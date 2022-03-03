@@ -97,6 +97,7 @@ export const Home = () => {
                 status={character.status}
                 species={character.species}
                 type={character.type}
+                location={character.location.name}
               />
             </AnimatePresence>
           ))

@@ -39,8 +39,12 @@
 }
 
 .displayCharacters-character button {
+  position: relative;
   background-color: #81e6d9;
+  box-shadow: 0px 4px 0px #5faba0;
   border: none;
+  /* box-shadow: 0 0.02 0rem rgba(174, 172, 172, 0.2); */
+  width: 90%;
 }
 
 .no-matching-message {
