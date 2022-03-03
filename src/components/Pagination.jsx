@@ -18,15 +18,15 @@ export const Pagination = ({
   //   if (usernameInput || userStatusInput || userSpeciesInput || userTypeInput || userGenderInput) {
   //     setCurrentPageNumber(1);
   //   }
-  // } , [setCurrentPageNumber, userGenderInput, userSpeciesInput, userStatusInput, userTypeInput, usernameInput]); 
+  // } , [setCurrentPageNumber, userGenderInput, userSpeciesInput, userStatusInput, userTypeInput, usernameInput]);
 
   const handleNextPage = () => {
     setCurrentPageNumber((prevPage) => {
-      if (prevPage < totalPageNumbers) { 
-        return prevPage + 1; 
-      } else { 
-        return 1; 
-      } 
+      if (prevPage < totalPageNumbers) {
+        return prevPage + 1;
+      } else {
+        return 1;
+      }
     });
   };
 
@@ -56,9 +56,6 @@ export const Pagination = ({
   return (
     <div className="pagination-wrapper">
       <span>
-        {/* {currentPageNumber >= 1 && (
-          <button onClick={handlePrevioiusPage}>Prev</button>
-        )} */}
         {currentPageNumber > 1 ? (
           <button onClick={handlePrevioiusPage}>Prev</button>
         ) : (
