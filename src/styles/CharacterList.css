@@ -6,6 +6,12 @@
   background-color: #1a212b;
   border: 1.5px solid #474950;
   border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.displayCharacters-character:hover {
+  transform: scale(1.1, 1.05); /* Equal to scaleX(2) scaleY(0.5) */
+  background-color: #11151c;
 }
 
 .displayCharacters-image {
@@ -28,6 +34,65 @@
   font-size: 1.3rem;
   transition: all 0.6s ease-in-out;
   color: rgb(195, 189, 189);
+}
+
+/* Status Banner */
+.status-banner-wrapper {
+  position: relative;
+  float: left;
+  z-index: 999;
+  /* background-color: #11151c; */
+  width: min-content;
+  /* opacity: 0.8; */
+  padding: 0.3rem 0.5rem;
+}
+.status-banner-alive {
+  color: #02ff28;
+  font-size: 0.8rem;
+  background-color: #11151c;
+  opacity: 0.8;
+  letter-spacing: 1px;
+  position: relative;
+  top: 2.2rem;
+  left: 5.7rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.status-banner-dead {
+  color: #fe0245;
+  font-size: 0.8rem;
+  opacity: 0.6;
+  letter-spacing: 1px;
+  background-color: #11151c;
+  opacity: 0.8;
+  letter-spacing: 1px;
+  position: relative;
+  top: 2.2rem;
+  left: 5.7rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.status-banner-unknown {
+  color: #dc02fe;
+  font-size: 0.8rem;
+  opacity: 0.6;
+  letter-spacing: 1px;
+  background-color: #11151c;
+  opacity: 0.8;
+  letter-spacing: 1px;
+  position: relative;
+  top: 2.1rem;
+  left: 4rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
 .displayCharacters-name_wrapper .displayCharacters-name {
@@ -133,11 +198,12 @@
   font-weight: bold;
   letter-spacing: 0.1px;
   width: 100%;
+  letter-spacing: 0.5px;
   /* white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; */
   transition: all 0.6s ease-in-out;
-  animation: fadeIn 0.6s ease-in-out;
+  animation: fadeIn 2s ease-in-out;
   cursor: pointer;
 }
 
@@ -148,6 +214,15 @@
   overflow: none;
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 /* Button */
 
 .character-button-wrapper {
@@ -155,7 +230,7 @@
   border-radius: 5px;
   margin: 0.9rem 0.5rem;
   position: relative;
-    box-shadow: 0px 3px 0px #5faba0;
+  box-shadow: 0px 3px 0px #5faba0;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
@@ -173,7 +248,26 @@
 }
 
 .character-button {
-  color:rgb(0, 0, 0); 
-  display: flex; 
+  color: rgb(52, 52, 52);
+  display: flex;
   justify-content: center;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+}
+
+/* Arrow */
+
+.character-button_arrow:hover {
+  animation: moveToLeft 0.5s ease-in-out;
+}
+
+@keyframes moveToLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(30%);
+  }
 }
