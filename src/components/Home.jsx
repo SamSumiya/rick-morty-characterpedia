@@ -39,9 +39,7 @@ export const Home = () => {
     userSpeciesInput,
     userTypeInput,
     userGenderInput,
-    // currentPageNumber,
   ]);
-
 
   const {
     fetchedAllCharacters,
@@ -57,10 +55,6 @@ export const Home = () => {
     userSpeciesInput,
     userTypeInput
   );
- console.log((listOfSearchTerms, 'listOfSearchTerms')); 
-  // const displaySelectedSearchTerms = () => {
-  //   console.log((listOfSearchTerms, 'listOfSearchTerms')); 
-  // };
 
   return (
     <>
@@ -84,12 +78,6 @@ export const Home = () => {
           {`Showing ${fetchedAllCharacters.length}`}
         </div>
       </div>
-
-      <Pagination
-        totalPageNumbers={totalPageNumbers}
-        currentPageNumber={currentPageNumber}
-        setCurrentPageNumber={setCurrentPageNumber}
-      />
 
       <motion.div
         layout
@@ -121,21 +109,25 @@ export const Home = () => {
               />
             ) : (
               <h1 className="no-matching-message">
-                <div>
-                  No Matching Character with {} ,
-                  Please Try Again
-                </div>
+                <h3>No Matching Characters...</h3>
+                <img
+                  className="no-matching-image"
+                  src="https://c.tenor.com/QINATntBXoEAAAAC/beth-rick.gif"
+                  alt="beth drinking wine"
+                />
               </h1>
             )}
           </>
         )}
       </motion.div>
-      <Pagination
-        totalPageNumbers={totalPageNumbers}
-        currentPageNumber={currentPageNumber}
-        setCurrentPageNumber={setCurrentPageNumber}
-        usernameInput={usernameInput}
-      />
+
+      {fetchedAllCharacters.length && (
+        <Pagination
+          setCurrentPageNumber={setCurrentPageNumber}
+          totalPageNumbers={totalPageNumbers}
+          currentPageNumber={currentPageNumber}
+        />
+      )}
     </>
   );
 };
