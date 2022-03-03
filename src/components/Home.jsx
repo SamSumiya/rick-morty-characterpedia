@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useCharacters } from '../hooks/useCharacters';
 import { FilterCharacters } from './FilterCharacters';
 import { Pagination } from './Pagination';
@@ -16,6 +16,7 @@ export const Home = () => {
   const [userTypeInput, setUsetTypeInput] = useState('');
   const [userGenderInput, setUserGenderInput] = useState('');
   const [filterCharacters, setFilterCharacters] = useState([]);
+  const [listOfSearchTerms, setListOfSearchTerms] = useState([]);
 
   // console.log(usernameInput, 'usernameInput');
   // console.log(userStatusInput, 'userStatusInput');
@@ -24,28 +25,42 @@ export const Home = () => {
   // console.log(userGenderInput, 'userGenderInput');
   // console.log(currentPageNumber, 'currentPageNumber');
 
-
-  console.log(userGenderInput, 'userGenderInput');
-  const { fetchedAllCharacters, totalPageNumbers, count, isLoading } =
-    useCharacters(
-      currentPageNumber,
+  useEffect(() => {
+    return setListOfSearchTerms([
       usernameInput,
       userStatusInput,
-      userGenderInput,
       userSpeciesInput,
-      userTypeInput
-    );
+      userTypeInput,
+      userGenderInput,
+    ]);
+  }, [
+    usernameInput,
+    userStatusInput,
+    userSpeciesInput,
+    userTypeInput,
+    userGenderInput,
+    // currentPageNumber,
+  ]);
 
-  console.log(fetchedAllCharacters);
 
-  if (isLoading) {
-    return (
-      <img
-        src="https://media2.giphy.com/media/9JwUhPDEGmhbWgCMEZ/source.gif"
-        alt="spinning Rick Head"
-      />
-    );
-  }
+  const {
+    fetchedAllCharacters,
+    totalPageNumbers,
+    count,
+    isLoading,
+    setIsLoading,
+  } = useCharacters(
+    currentPageNumber,
+    usernameInput,
+    userStatusInput,
+    userGenderInput,
+    userSpeciesInput,
+    userTypeInput
+  );
+ console.log((listOfSearchTerms, 'listOfSearchTerms')); 
+  // const displaySelectedSearchTerms = () => {
+  //   console.log((listOfSearchTerms, 'listOfSearchTerms')); 
+  // };
 
   return (
     <>
@@ -58,6 +73,7 @@ export const Home = () => {
         setUserSpeciesInput={setUserSpeciesInput}
         setUserTypeInput={setUsetTypeInput}
         isLoading={isLoading}
+        setIsLoading={setIsLoading}
       />
 
       <div className="displayingCharacters-numbers-wrapper">
@@ -98,7 +114,19 @@ export const Home = () => {
           ))
         ) : (
           <>
-            <h1 className="no-matching-message"> No Matching Character...</h1>
+            {isLoading ? (
+              <img
+                src="https://media2.giphy.com/media/9JwUhPDEGmhbWgCMEZ/source.gif"
+                alt="spinning Rick Head"
+              />
+            ) : (
+              <h1 className="no-matching-message">
+                <div>
+                  No Matching Character with {} ,
+                  Please Try Again
+                </div>
+              </h1>
+            )}
           </>
         )}
       </motion.div>

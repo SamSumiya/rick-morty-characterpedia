@@ -10,13 +10,14 @@ export const FilterCharacters = ({
   setUserSpeciesInput,
   setUserTypeInput,
   isLoading,
+  setIsLoading,
 }) => {
   const [search, setSearch] = useState('');
   const [filteredCharacters, setFilteredCharacters] = useState([]);
   const [nonDupChacters, setNonDupCharacters] = useState([]);
 
   const handleReset = () => {
-    setSearch('');
+    setUsernameInput('');
     setFilterCharacters('');
     setUserStatusInput('');
     setUserGenderInput('');
@@ -40,47 +41,52 @@ export const FilterCharacters = ({
     setFilterCharacters(filteredCharacters);
   }, [filteredCharacters, search, setFilterCharacters, setFilteredCharacters]);
 
-  const selectInputRef = useRef();
+  const selectUserInputRef = useRef(); 
+  const selectStatusRef = useRef();
   const selectGenderRef = useRef();
   const selectSpeciesRef = useRef();
   const selectTypeRef = useRef();
 
+  // console.log(selectUserInputRef.current.value);
+
   const onClear = () => {
-    console.log(selectInputRef.current.status);
-    selectInputRef.current.innerHTML = `
-    <option value="">Status</option> 
-    <option value="alive">Alive</option>
-    <option value="dead">Dead</option>
-    <option value="unknown">Unknown</option>
+
+    selectUserInputRef.current.value = ' ';
+    setSearch('')
+    selectStatusRef.current.innerHTML = `
+      <option value="">Status</option> 
+      <option value="alive">Alive</option>
+      <option value="dead">Dead</option>
+      <option value="unknown">Unknown</option>
     `;
     selectGenderRef.current.innerHTML = ` 
-    <option value="">Gender</option>
-       <option value="female">Female</option>
-        <option value="male">Male</option>
-        <option value="genderless">Genderless</option>
-        <option value="unknown">Unknown</option>
-        `;
+      <option value="">Gender</option>
+      <option value="female">Female</option>
+      <option value="male">Male</option>
+      <option value="genderless">Genderless</option>
+      <option value="unknown">Unknown</option>
+    `;
     selectSpeciesRef.current.innerHTML = `
-        <option value="">Species</option>
-        <option value="human">Human</option>
-        <option value="alien">Alien</option>
-        <option value="humanoid">Humanoid</option>
-        <option value="poopybutthole">Poopybutthole</option>
-        <option value="mythological">Mythological</option>
-        <option value="animal">Animal</option>
-        <option value="disease">Disease</option>
-        <option value="robot">Robot</option>
-        <option value="cronenberg">Cronenberg</option>
-        <option value="unknown">Unknown</option>
+      <option value="">Species</option>
+      <option value="human">Human</option>
+      <option value="alien">Alien</option>
+      <option value="humanoid">Humanoid</option>
+      <option value="poopybutthole">Poopybutthole</option>
+      <option value="mythological">Mythological</option>
+      <option value="animal">Animal</option>
+      <option value="disease">Disease</option>
+      <option value="robot">Robot</option>
+      <option value="cronenberg">Cronenberg</option>
+      <option value="unknown">Unknown</option>
     `;
     selectTypeRef.current.innerHTML = ` 
       <option value="">Type</option>
-        <option value="Bird-Person">Bird-Person</option>
-        <option value="Monster">Monster</option>
-        <option value="Superhuman">Superhuman</option>
-        <option value="planet">Planet</option>
-        <option value="Clone">Clone</option>
-        `;
+      <option value="Bird-Person">Bird-Person</option>
+      <option value="Monster">Monster</option>
+      <option value="Superhuman">Superhuman</option>
+      <option value="planet">Planet</option>
+      <option value="Clone">Clone</option>
+    `;
   };
 
   const handleFilter = (event) => {
@@ -104,27 +110,36 @@ export const FilterCharacters = ({
 
   useEffect(() => {
     const arrayOfNames = [];
+    setIsLoading(true);
     fetchedAllCharacters.filter((character) => {
       if (!arrayOfNames.includes(character.name)) {
         arrayOfNames.push(character.name);
       }
       setNonDupCharacters(arrayOfNames);
     });
-  }, [search, fetchedAllCharacters]);
-
+    setIsLoading(false);
+  }, [search, fetchedAllCharacters, setIsLoading]);
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <img
+          src="https://media.giphy.com/media/3o7aD2d7hy9ktXNDP2/giphy.gif"
+          alt="background spinner graphic"
+        />
+      </div>
+    );
   }
-
+  console.log(search);
   return (
-    <form className="input-wrapper" onSubmit={handleFormSubmit}>
+    <form className="form-wrapper" onSubmit={handleFormSubmit}>
       <input
         type="search"
         placeholder="Search for a character"
+        ref={selectUserInputRef}
         value={search}
         onChange={handleFilter}
       />
-      {filteredCharacters.length !== 0 && (
+      {search !== '' && (
         <div className="search-characterNames">
           {nonDupChacters.map((name, id) => {
             return (
@@ -172,7 +187,7 @@ export const FilterCharacters = ({
         onChange={(event) => {
           setUserStatusInput(event.target.value);
         }}
-        ref={selectInputRef}
+        ref={selectStatusRef}
       >
         <option value="">Status</option>
         <option value="alive">Alive</option>
@@ -233,8 +248,12 @@ export const FilterCharacters = ({
         <option value="planet">Planet</option>
         <option value="Clone">Clone</option>
       </select>
-
-      <button onClick={onClear}> Reset </button>
+      <div className="reset-button-wrapper">
+        <button onClick={onClear} className="reset-button">
+          {' '}
+          reset{' '}
+        </button>
+      </div>
     </form>
   );
 };
