@@ -7,8 +7,10 @@ import { faGrin } from '@fortawesome/free-solid-svg-icons';
 import { faSkull } from '@fortawesome/free-solid-svg-icons';
 import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 import { faLocationArrow } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 export const CharacterList = ({
+  characterId,
   image,
   name,
   status,
@@ -55,7 +57,7 @@ export const CharacterList = ({
               ? 'Type: None'
               : `Type: ${clickForMore ? type : type.slice(0, 5)}`}
             <div onClick={handleClickForMore} className="showmore-showless">
-              {type.length < 10  ? '' : clickForMore ? '...more' : '...less'}
+              {type.length < 10 ? '' : clickForMore ? '...more' : '...less'}
             </div>
           </li>
           <li className="displayCharacters-status">
@@ -105,15 +107,17 @@ export const CharacterList = ({
               {location}
             </motion.div>
           </li>
-
           {/* <div className="character-button-wrapper"> */}
-          <button className="character-button-wrapper">
-            <div className="character-button">
-              <span className='character-button_arrow'>
-                Details <FontAwesomeIcon icon={faArrowRight} />
-              </span>
-            </div>
-          </button>
+          <Link to={`characters/${characterId}`}>
+            <button className="character-button-wrapper">
+              <div className="character-button">
+                <span className="character-button_arrow">
+                  Details <FontAwesomeIcon icon={faArrowRight} />
+                </span>
+              </div>
+            </button>
+          </Link>
+
           {/* </div> */}
         </ul>
       }

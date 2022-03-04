@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { useCharacters } from '../hooks/useCharacters';
 import { FilterCharacters } from './FilterCharacters';
 import { Pagination } from './Pagination';
-import { useCharacterDetailInfo } from '../hooks/useCharacterDetailInfo';
+// import { Link } from 'react-router-dom';
+
 import '../styles/Home.css';
 
 import { CharacterList } from '../view/CharacterList';
@@ -15,9 +16,10 @@ export const Home = () => {
   const [userSpeciesInput, setUserSpeciesInput] = useState('');
   const [userTypeInput, setUsetTypeInput] = useState('');
   const [userGenderInput, setUserGenderInput] = useState('');
+  const [selectedCharacterId, setSelectedCharacterId] = useState(0);
+
   const [filterCharacters, setFilterCharacters] = useState([]);
   const [listOfSearchTerms, setListOfSearchTerms] = useState([]);
-
 
   useEffect(() => {
     return setListOfSearchTerms([
@@ -48,10 +50,7 @@ export const Home = () => {
     userGenderInput,
     userSpeciesInput,
     userTypeInput
-    );
-  
-  const { selectedCharacter } = useCharacterDetailInfo(2);
-  
+  );
 
   return (
     <>
@@ -68,7 +67,17 @@ export const Home = () => {
       />
       <div className="displayingCharacters-numbers-wrapper">
         <div className="displayingCharacters-found-numbers">
-          {'·'} <span style={{ borderBottom: '2px solid gray', color: '#ded5d5', fontSize: '.8rem'}}>{count}</span> {'characters found'} {'·'}
+          {'·'}{' '}
+          <span
+            style={{
+              borderBottom: '2px solid gray',
+              color: '#ded5d5',
+              fontSize: '.8rem',
+            }}
+          >
+            {count}
+          </span>{' '}
+          {'characters found'} {'·'}
         </div>
         <div className="displayingCharacters-page-length">
           {`Showing ${fetchedAllCharacters.length}`}
@@ -88,6 +97,7 @@ export const Home = () => {
           fetchedAllCharacters.map((character) => (
             <AnimatePresence key={character.id}>
               <CharacterList
+                characterId={character.id}
                 image={character.image}
                 name={character.name}
                 status={character.status}
