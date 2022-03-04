@@ -1,6 +1,6 @@
 // Imported from local folders and files
 import './App.css';
-import { NavBar } from './components/NavBar.jsx';
+// import { NavBar } from './components/NavBar.jsx';
 import { Home } from './components/Home';
 import { CharacterDetail } from './components/CharacterDetail';
 import { NotFound } from './components/NotFound';
