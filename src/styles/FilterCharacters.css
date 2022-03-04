@@ -47,21 +47,23 @@
   padding: 0.7rem 1.1rem;
   border: none;
   border-radius: 5px;
-  background-color: rgb(67, 65, 65);
-  color: rgb(225, 223, 223);
+  background-color: rgb(208, 10, 10);
+  color: rgb(228, 213, 213);
   position: relative;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.2s ease-in-out;
   margin: 1rem auto;
+  font-size: 1rem;
+  letter-spacing: 1px;
   box-shadow: 0 0.12rem rgba(0, 0, 0, 0.5);
 }
 
 .reset-button:hover {
-  background-color: rgb(225, 223, 223);
-  color: rgb(67, 65, 65);
+  background-color: rgb(251, 0, 0);
+  color: rgb(255, 255, 255);
 }
 
 .reset-button:active {
   background-color: rgb(251, 251, 251);
   color: rgb(35, 34, 34);
   box-shadow: 0 0.12rem rgba(0, 0, 0, 0.5);
-} 
+}

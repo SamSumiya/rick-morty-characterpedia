@@ -2,16 +2,42 @@
   color: rgb(225, 225, 225);
   background-color: rgb(28, 28, 25);
   height: 100vh;
-  width: 100%; 
+  width: 100%;
   display: grid;
-  grid-template-columns: 2.5fr .5fr;
+  grid-template-columns: 2.5fr 0.5fr;
 }
 
 .character-detail-wrapper {
-  width:105%;
+  width: 105%;
   padding: max-content;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
+
+/* Go Back Button */
+.go-back-button {
+  padding: 0.6rem 0.8rem;
+  background-color: rgb(181, 181, 178);
+  border: none;
+  color: rgb(62, 60, 60);
+  font-size: 1.2rem;
+  box-shadow: 2px 2px 5px rgba(232, 229, 229, 0.5);
+  margin: 1rem 2rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.35s ease-in-out;
+}
+
+.go-back-button:hover {
+  background-color: rgb(55, 55, 55);
+  color: rgb(200, 200, 200);
+  box-shadow: 2px 2px 5px rgba(154, 152, 152, 0.5);
+}
+
+
+
+/* Go Back Button */
+
+
 
 .character-intro {
   width: 100%;
@@ -29,6 +55,7 @@
   width: 15rem;
   height: 15rem;
   margin: 2rem auto;
+  box-shadow: 3px 2px 10px rgba(252, 252, 252, 0.5);
 }
 
 .character-intro_name {
@@ -79,10 +106,10 @@
   margin: 0 1rem;
   display: flex;
   flex-direction: column;
-  align-items:flex-start;
+  align-items: flex-start;
   padding: 0 0 3rem 5rem;
-  width: 80%; 
-  text-align: center; 
+  width: 80%;
+  text-align: center;
   margin: 0 auto;
 }
 
@@ -115,40 +142,54 @@
   margin: 0.1rem 0;
 }
 
-.Character-episodes {
-  margin: 1rem 1rem; 
-  background-color: rgb(32, 33, 33);
-  padding: 2rem 5rem; 
-  margin: 0rem 1em; 
-}
 
 
 .Character-episodes-title {
-  font-size: 1.5rem; 
-  font-weight: bold; 
+  font-size: 1.5rem;
+  font-weight: bold;
   letter-spacing: 1.5px;
-  margin: 0 auto; 
-  text-align: center; 
+  margin: 0 auto;
+  text-align: center;
   color: antiquewhite;
-  padding: 2rem; 
-  box-shadow: 2px 5px 12px rgba(169, 166, 166, 0.5); 
+  padding: 2rem;
+  box-shadow: 2px 5px 12px rgba(169, 166, 166, 0.5);
   border-radius: 3px;
   margin-bottom: 1rem;
 }
 
-@media screen and (max-width:1000px) {
+.Character-episodes {
+  margin: 1rem 0.9rem;
+  background-color: rgb(32, 33, 33);
+  padding: 2rem 5rem;
+  margin: 0rem 1em;
+  cursor: pointer;
+}
+
+.one-episode {
+  color:rgb(28, 28, 25);
+}
+
+.one-episode:hover {
+  /* background-color: rgb(232, 226, 226); */
+ border: 2px solid #dfbf0a;
+ margin: 2rem 0rem;
+ 
+}
+
+
+@media screen and (max-width: 1000px) {
   .character-wrapper {
     grid-template-columns: 1fr;
   }
   .Character-episodes {
     width: 100%;
-    margin: 0; 
+    margin: 0;
   }
   .Character-episodes-title {
     width: 100%;
   }
-  .character-detail-listInfo{ 
-    width: 100%; 
-    margin: 0 2rem;  
+  .character-detail-listInfo {
+    width: 100%;
+    margin: 0 2rem;
   }
 }
