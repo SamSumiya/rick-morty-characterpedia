@@ -139,8 +139,8 @@ export const FilterCharacters = ({
 
       {search !== '' && (
         <div className="search-characterNames">
-          {nonDupChacters.map((name, id) => {
-            return (
+          {nonDupChacters.map((name, id) => (
+            (
               <div key={name + id}>
                 <p
                   className="dropdown-name"
@@ -149,8 +149,8 @@ export const FilterCharacters = ({
                   {name}
                 </p>
               </div>
-            );
-          })}
+            )
+          ))}
 
           
           {/* {filteredCharacters.map((character) => {
