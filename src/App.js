@@ -1,25 +1,23 @@
 // Imported from local folders and files
-// import { useCharacters } from './hooks/useCharacters';
-import { FilterCharacters } from './components/FilterCharacters.jsx';
+import './App.css';
 import { NavBar } from './components/NavBar.jsx';
 import { Home } from './components/Home';
-
-import './App.css';
+import { CharacetrDetail } from './components/CharacetrDetail';
+import { NotFound } from './components/NotFound';
 
 // Imported from outside resoucrs
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
-
-
- 
   return (
     <Router>
       <div>
-        <NavBar />
+        <NavBar/>
       </div>
       <Routes>
-        <Route path='/' element={<Home />} /> 
+        <Route path="/" element={<Home />} />
+        <Route exact path="/:characterId" element={<CharacetrDetail />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
