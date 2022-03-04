@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useCharacters } from '../hooks/useCharacters';
 import { FilterCharacters } from './FilterCharacters';
 import { Pagination } from './Pagination';
-
+import { useCharacterDetailInfo } from '../hooks/useCharacterDetailInfo';
 import '../styles/Home.css';
 
 import { CharacterList } from '../view/CharacterList';
@@ -18,12 +18,6 @@ export const Home = () => {
   const [filterCharacters, setFilterCharacters] = useState([]);
   const [listOfSearchTerms, setListOfSearchTerms] = useState([]);
 
-  // console.log(usernameInput, 'usernameInput');
-  // console.log(userStatusInput, 'userStatusInput');
-  // console.log(userSpeciesInput, 'userSpeciesInput');
-  // console.log(userTypeInput, 'userTypeInput');
-  // console.log(userGenderInput, 'userGenderInput');
-  // console.log(currentPageNumber, 'currentPageNumber');
 
   useEffect(() => {
     return setListOfSearchTerms([
@@ -54,7 +48,10 @@ export const Home = () => {
     userGenderInput,
     userSpeciesInput,
     userTypeInput
-  );
+    );
+  
+  const { selectedCharacter } = useCharacterDetailInfo(2);
+  
 
   return (
     <>

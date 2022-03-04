@@ -16,8 +16,6 @@ export const FilterCharacters = ({
   const [filteredCharacters, setFilteredCharacters] = useState([]);
   const [nonDupChacters, setNonDupCharacters] = useState([]);
 
-  console.log(fetchedAllCharacters);
-
   const handleReset = () => {
     setUsernameInput('');
     setFilterCharacters('');
@@ -128,7 +126,7 @@ export const FilterCharacters = ({
       </div>
     );
   }
-  console.log(search);
+
   return (
     <form className="form-wrapper" onSubmit={handleFormSubmit}>
       <input

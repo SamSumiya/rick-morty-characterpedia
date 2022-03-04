@@ -12,9 +12,9 @@ export const fetchAPICharactersInfo = async (
   pages.push(pageNumber);
 
   try {
-      let response = await fetch(
-        `${URL}/?page=${pageNumber}&name=${characterName}&status=${characterStatus}&gender=${characterGender}&type=${characterType}&species=${characterSpecies}`
-      );
+    let response = await fetch(
+      `${URL}/?page=${pageNumber}&name=${characterName}&status=${characterStatus}&gender=${characterGender}&type=${characterType}&species=${characterSpecies}`
+    );
     // let response;
     // if (characterType !== '') {
     //   response = await fetch(
@@ -42,7 +42,6 @@ export const fetchAPICharactersInfo = async (
     let count;
     let fetchCharacters;
 
-
     if (response.status === 404) {
       totalPages = 0;
       count = 0;
@@ -52,10 +51,21 @@ export const fetchAPICharactersInfo = async (
       count = responseData.info.count;
       fetchCharacters = responseData.results;
     }
-    // console.log(totalPages);
+
     return { totalPages, fetchCharacters, count };
   } catch (error) {
     console.error(error);
   }
-  
+};
+
+export const fetchAPICharacterDetailInfo = async (characterId) => {
+  try {
+    const response = await fetch(`${URL}/${characterId}`);
+    const data = await response.json();
+    const characterDetailInfo = await data;
+    console.log(characterDetailInfo);
+    return characterDetailInfo;
+  } catch (error) {
+    console.error(error);
+  }
 };

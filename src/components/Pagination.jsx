@@ -11,11 +11,10 @@ export const Pagination = ({
 }) => {
   // const [localPage, setLocalPage] = useState(currentPageNumber);
   // paginate
-  // const [currentPage, setCurrentpage] = useState(currentPageNumber) 
+  // const [currentPage, setCurrentpage] = useState(currentPageNumber)
   function handlePageClick({ selected: currentPageNumber }) {
-    console.log(currentPageNumber);
     setCurrentPageNumber(currentPageNumber + 1);
-  } 
+  }
 
   // console.log(currentPage, 'currentPage');
   // const handleNextPage = () => {
@@ -50,7 +49,6 @@ export const Pagination = ({
   // for (let i = 1; i <= totalPageNumbers; i++) {
   //   pageNumbers.push(i);
   // }
-
 
   return (
     <motion.div
