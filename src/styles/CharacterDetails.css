@@ -1,0 +1,154 @@
+.character-wrapper {
+  color: rgb(225, 225, 225);
+  background-color: rgb(28, 28, 25);
+  height: 100vh;
+  width: 100%; 
+  display: grid;
+  grid-template-columns: 2.5fr .5fr;
+}
+
+.character-detail-wrapper {
+  width:105%;
+  padding: max-content;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.character-intro {
+  width: 100%;
+  height: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.character-intro_image {
+  border-radius: 10rem;
+  border: 2px solid rgb(225, 225, 225);
+  object-fit: contain;
+  width: 15rem;
+  height: 15rem;
+  margin: 2rem auto;
+}
+
+.character-intro_name {
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.character-Detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 90%;
+}
+
+.character-info {
+  overflow: hidden;
+  text-align: center;
+  width: 80%;
+  margin: 3rem auto;
+}
+
+.character-info:before,
+.character-info:after {
+  background-color: rgb(152, 146, 146);
+  content: '';
+  display: inline-block;
+  height: 3px;
+  position: relative;
+  vertical-align: middle;
+  width: 30%;
+}
+
+.character-info:before {
+  right: 0.8em;
+  margin-left: 0%;
+}
+
+.character-info:after {
+  left: 0.8em;
+  margin-right: 25%;
+}
+
+.character-detail-listInfo {
+  margin: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
+  padding: 0 0 3rem 5rem;
+  width: 80%; 
+  text-align: center; 
+  margin: 0 auto;
+}
+
+.character-detail-listInfo div span {
+  margin: 0 0.5rem;
+  width: 100%;
+}
+
+.character-status {
+  margin: 0.1rem 0;
+}
+
+.character-gender {
+  margin: 0.1rem 0;
+}
+
+.character-species {
+  margin: 0.1rem 0;
+}
+
+.character-origin {
+  margin: 0.1rem 0;
+}
+
+.character-location-info {
+  margin: 0.1rem 0;
+}
+
+.character-createdTime {
+  margin: 0.1rem 0;
+}
+
+.Character-episodes {
+  margin: 1rem 1rem; 
+  background-color: rgb(32, 33, 33);
+  padding: 2rem 5rem; 
+  margin: 0rem 1em; 
+}
+
+
+.Character-episodes-title {
+  font-size: 1.5rem; 
+  font-weight: bold; 
+  letter-spacing: 1.5px;
+  margin: 0 auto; 
+  text-align: center; 
+  color: antiquewhite;
+  padding: 2rem; 
+  box-shadow: 2px 5px 12px rgba(169, 166, 166, 0.5); 
+  border-radius: 3px;
+  margin-bottom: 1rem;
+}
+
+@media screen and (max-width:1000px) {
+  .character-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .Character-episodes {
+    width: 100%;
+    margin: 0; 
+  }
+  .Character-episodes-title {
+    width: 100%;
+  }
+  .character-detail-listInfo{ 
+    width: 100%; 
+    margin: 0 2rem;  
+  }
+}
