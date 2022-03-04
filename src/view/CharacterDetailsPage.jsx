@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/CharacterDetails.css';
 
 export const CharacterDetailsPage = ({
@@ -19,9 +20,12 @@ export const CharacterDetailsPage = ({
     setShowMoreOrLess(!showMoreOrLess);
   };
 
+  const navigate = useNavigate()
+
   return (
     <div className="character-wrapper">
       <div className="character-detail-wrapper ">
+        <button onClick={() => navigate(-1)}>Back</button>
         <div className="character-intro">
           <img
             src={image}
