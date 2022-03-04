@@ -25,7 +25,9 @@ export const CharacterDetailsPage = ({
   return (
     <div className="character-wrapper">
       <div className="character-detail-wrapper ">
-        <button onClick={() => navigate(-1)}>Back</button>
+        <button onClick={() => navigate(-1)} className="go-back-button">
+          Back
+        </button>
         <div className="character-intro">
           <img
             src={image}
@@ -75,7 +77,7 @@ export const CharacterDetailsPage = ({
           ? episode?.map((item, index) => {
               return (
                 <ul key={index}>
-                  <a href={item} style={{ color: '#a9a8a8' }}>
+                  <a className='one-episode' href={item} style={{ color: '#a9a8a8' }}>
                     {item}
                   </a>
                 </ul>
@@ -84,7 +86,11 @@ export const CharacterDetailsPage = ({
           : episode?.slice(0, 5).map((item, index) => {
               return (
                 <ul key={index}>
-                  <a href={item} style={{ color: '#a9a8a8' }}>
+                  <a
+                    className="one-episode"
+                    href={item}
+                    style={{ color: '#a9a8a8' }}
+                  >
                     {item}
                   </a>
                 </ul>

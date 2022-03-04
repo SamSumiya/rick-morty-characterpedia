@@ -11,7 +11,7 @@
 
 .displayingCharacters-wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(8rem, 10rem));
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 15rem));
   margin: 0.5rem 0.5rem;
   justify-content: center;
   flex-direction: column;

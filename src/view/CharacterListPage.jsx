@@ -62,15 +62,15 @@ export const CharacterListPage = ({
           </li>
           <li className="displayCharacters-status">
             {status === 'Alive' ? (
-              <p style={{ color: '#b3e680' }}>
+              <div style={{ color: '#b3e680' }}>
                 <FontAwesomeIcon
                   icon={faGrin}
                   style={{ color: '#e1ffc5', fontSize: '.7rem' }}
                 />
                 <span style={{ margin: '7px' }}>{'Alive'}</span>
-              </p>
+              </div>
             ) : (
-              <p>
+              <div>
                 {status === 'Dead' ? (
                   <p style={{ color: '#e68080' }}>
                     <FontAwesomeIcon
@@ -90,7 +90,7 @@ export const CharacterListPage = ({
                     <span style={{ margin: '7px' }}>{'Unknown'}</span>
                   </p>
                 )}{' '}
-              </p>
+              </div>
             )}
           </li>
           <li className="character-location">

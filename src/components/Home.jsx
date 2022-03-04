@@ -115,7 +115,7 @@ export const Home = () => {
               />
             ) : (
               <h1 className="no-matching-message">
-                <h3>No Matching Characters...</h3>
+                <p>No Matching Characters...</p>
                 <img
                   className="no-matching-image"
                   src="https://c.tenor.com/QINATntBXoEAAAAC/beth-rick.gif"
