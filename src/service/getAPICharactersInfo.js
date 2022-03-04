@@ -63,7 +63,6 @@ export const fetchAPICharacterDetailInfo = async (characterId) => {
     const response = await fetch(`${URL}/${characterId}`);
     const data = await response.json();
     const characterDetailInfo = await data;
-    console.log(characterDetailInfo);
     return characterDetailInfo;
   } catch (error) {
     console.error(error);

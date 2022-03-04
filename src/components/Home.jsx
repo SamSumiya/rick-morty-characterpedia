@@ -2,11 +2,10 @@ import { useEffect, useState } from 'react';
 import { useCharacters } from '../hooks/useCharacters';
 import { FilterCharacters } from './FilterCharacters';
 import { Pagination } from './Pagination';
-// import { Link } from 'react-router-dom';
 
 import '../styles/Home.css';
 
-import { CharacterList } from '../view/CharacterList';
+import { CharacterListPage } from '../view/CharacterListPage';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const Home = () => {
@@ -96,7 +95,7 @@ export const Home = () => {
         {fetchedAllCharacters.length ? (
           fetchedAllCharacters.map((character) => (
             <AnimatePresence key={character.id}>
-              <CharacterList
+              <CharacterListPage
                 characterId={character.id}
                 image={character.image}
                 name={character.name}
