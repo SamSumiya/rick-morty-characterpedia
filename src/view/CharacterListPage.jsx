@@ -9,7 +9,7 @@ import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 import { faLocationArrow } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
-export const CharacterList = ({
+export const CharacterListPage = ({
   characterId,
   image,
   name,

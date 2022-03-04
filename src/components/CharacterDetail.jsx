@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 import { useCharacterDetailInfo } from '../hooks/useCharacterDetailInfo';
-import { CharacterDetails } from '../view/CharacterDetails';
+import { CharacterDetailsPage } from '../view/CharacterDetailsPage';
 
 export const CharacterDetail = () => {
 
@@ -13,7 +13,7 @@ export const CharacterDetail = () => {
     return <div>Loading...</div> 
   } 
   
-  return <CharacterDetails selectedCharacter={selectedCharacter} />; 
+  return <CharacterDetailsPage selectedCharacter={selectedCharacter} />; 
 
 
 };
