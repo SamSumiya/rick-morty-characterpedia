@@ -23,3 +23,9 @@
   color: rgb(255, 255, 255);
   border-bottom: 1px solid rgb(255, 255, 255);
 } 
+
+.footer span a:active {
+  color: rgb(130, 126, 126);
+  border-bottom: 1px solid rgb(237, 17, 17); 
+}
+
