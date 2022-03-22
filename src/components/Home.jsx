@@ -15,10 +15,12 @@ export const Home = () => {
   const [userSpeciesInput, setUserSpeciesInput] = useState('');
   const [userTypeInput, setUsetTypeInput] = useState('');
   const [userGenderInput, setUserGenderInput] = useState('');
-  const [selectedCharacterId, setSelectedCharacterId] = useState(0);
+  // const [selectedCharacterId, setSelectedCharacterId] = useState(0);
 
   const [filterCharacters, setFilterCharacters] = useState([]);
   const [listOfSearchTerms, setListOfSearchTerms] = useState([]);
+
+  console.log(filterCharacters, listOfSearchTerms);
 
   useEffect(() => {
     return setListOfSearchTerms([

@@ -41,7 +41,7 @@ export const FilterCharacters = ({
     setFilterCharacters(filteredCharacters);
   }, [filteredCharacters, search, setFilterCharacters, setFilteredCharacters]);
 
-  const selectUserInputRef = useRef(); 
+  const selectUserInputRef = useRef();
   const selectStatusRef = useRef();
   const selectGenderRef = useRef();
   const selectSpeciesRef = useRef();
@@ -49,7 +49,7 @@ export const FilterCharacters = ({
 
   const onClear = () => {
     selectUserInputRef.current.value = ' ';
-    setSearch('')
+    setSearch('');
     selectStatusRef.current.innerHTML = `
       <option value="">Status</option> 
       <option value="alive">Alive</option>
@@ -110,9 +110,9 @@ export const FilterCharacters = ({
     setIsLoading(true);
     fetchedAllCharacters.filter((character) => {
       if (!arrayOfNames.includes(character.name)) {
-        arrayOfNames.push(character.name);
+        return arrayOfNames.push(character.name);
       }
-      setNonDupCharacters(arrayOfNames);
+      return setNonDupCharacters(arrayOfNames);
     });
     setIsLoading(false);
   }, [search, fetchedAllCharacters, setIsLoading]);
@@ -140,19 +140,16 @@ export const FilterCharacters = ({
       {search !== '' && (
         <div className="search-characterNames">
           {nonDupChacters.map((name, id) => (
-            (
-              <div key={name + id}>
-                <p
-                  className="dropdown-name"
-                  onClick={(value) => handleChange(value.target.innerText)}
-                >
-                  {name}
-                </p>
-              </div>
-            )
+            <div key={name + id}>
+              <p
+                className="dropdown-name"
+                onClick={(value) => handleChange(value.target.innerText)}
+              >
+                {name}
+              </p>
+            </div>
           ))}
 
-          
           {/* {filteredCharacters.map((character) => {
             return (
               <div key={character.id}>
