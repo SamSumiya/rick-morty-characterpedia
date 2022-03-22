@@ -112,7 +112,7 @@ export const FilterCharacters = ({
       if (!arrayOfNames.includes(character.name)) {
         return arrayOfNames.push(character.name);
       }
-      setNonDupCharacters(arrayOfNames);
+      return setNonDupCharacters(arrayOfNames);
     });
     setIsLoading(false);
   }, [search, fetchedAllCharacters, setIsLoading]);
